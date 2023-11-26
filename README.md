@@ -14,9 +14,7 @@ This project is part of the course Digital Systems (EE224), at IIT Bombay (2023)
 ## Component List
 
 ### ARITHEMATIC UNIT
-1. `adder16.vhdl`: 16-bit adder
-2. `nandbit.vhdl`: 16-bitwise NAND
-3. `alu.vhdl`: combination of ADD and NAND with flag registers(C,Z flags)
+1. `alu.vhdl`: combination of ADD and NAND with flag registers(C,Z flags)
 
 ### MULTIPLEXERS
 #### 1-bit Devices
@@ -30,15 +28,15 @@ This project is part of the course Digital Systems (EE224), at IIT Bombay (2023)
 2. `Mux16_4_1.vhdl`: 4-to-1 MUX
 
 ### REGISTERS
-1. `Register1.vhdl`: 1-bit register with synchronous write and ascynchonous read
-2. `Register16.vhdl`: 16-bit register with synchronous write and ascynchonous read
+1. `Register1.vhdl`: 1-bit register with synchronous write and asynchonous read
+2. `Register16.vhdl`: 16-bit register with synchronous write and asynchonous read
 3. `Register_file.vhdl`: Set of 8 16-bit registers
 
 ### MEMORY UNIT
-`Memory_asyncread_syncwrite.vhd`
+
 
 ### FSM
 `FSM.vhdl`: Controller FSM (controls signals)
 
 ### DUT
-`iitb_cpu.vhdl`: Main code
+`IITB_CPU.vhdl`: Main code
