@@ -9,7 +9,7 @@ This project is part of the course Digital Systems (EE224), at IIT Bombay (2023)
 * [Anshu Arora](https://github.com/AroraAnshu26)
 * [Sachi Deshmukh](https://github.com/Sachi-Deshmukh)
 
-[Design Document](/DesignReport.pdf)
+[Design Document](/Design_IITB_CPU.pdf)
 
 ## Component List
 
