@@ -20,23 +20,22 @@ This project is part of the course Digital Systems (EE224), at IIT Bombay (2023)
 #### 1-bit Devices
 1. `Mux1_2_1.vhdl`: 2-to-1 MUX
 2. `Mux1_4_1.vhdl`: 4-to-1 MUX
-#### 3-bit Devices
-1. `Mux3_2_1.vhdl`: 2-to-1 MUX
-2. `Mux3_4_1.vhdl`: 4-to-1 MUX
-#### 16-bit Devices
-1. `Mux16_2_1.vhdl`: 2-to-1 MUX
-2. `Mux16_4_1.vhdl`: 4-to-1 MUX
+3. `Mux1_8_1.vhdl`: 8-to-1 MUX
+
+### DEMULTIPLEXERS
+#### 1-bit Devices
+1. `Mux1_8_1.vhdl`: 8-to-1 MUX
+
 
 ### REGISTERS
-1. `Register1.vhdl`: 1-bit register with synchronous write and asynchonous read
-2. `Register16.vhdl`: 16-bit register with synchronous write and asynchonous read
-3. `Register_file.vhdl`: Set of 8 16-bit registers
+1. `Register16BIT.vhdl`: 16-bit register with synchronous write and asynchonous read
+2. `Register_file.vhdl`: Set of 8 16-bit registers
 
 ### MEMORY UNIT
-
-
-### FSM
-`FSM.vhdl`: Controller FSM (controls signals)
+1. `Memory.vhdl`: Array of 512 8-bit vectors
 
 ### DUT
-`IITB_CPU.vhdl`: Main code
+`DUT.vhdl`: Top-Level entity
+
+### MAIN CPU UNIT
+`CPU.vhdl`: Main code
