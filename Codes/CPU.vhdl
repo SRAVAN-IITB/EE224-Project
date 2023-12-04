@@ -13,7 +13,7 @@ architecture struct of CPU is
     type state is (rst, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17);
 	
 	-- Declaration of components Reg_File, MUX_8, MUX_4, MUX_2, Memory, ALU
-	-- Flags, memory and all reg except temporary ones
+	-- Flags, memory and all reg except temporary ones check
     component Reg_16BIT is
         port (
             Reset, clk: in std_logic;
@@ -564,4 +564,3 @@ begin
 	end process MUX10;
 
 end struct;
-
