@@ -4,7 +4,7 @@ use IEEE.NUMERIC_STD.all;
 
 entity CPU is
     port (
-        Clk, Reset: in std_logic--;
+        Clk, Reset: in std_logic;
 		  Input: in std_logic_vector(15 downto 0);
 		  Output: out std_logic_vector(15 downto 0)
 		    );
