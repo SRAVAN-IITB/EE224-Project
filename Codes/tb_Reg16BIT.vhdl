@@ -4,22 +4,22 @@ use std.textio.all;
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity tb_ALU is
+entity tb_Reg16BIT is
 end entity;
-architecture Behave of tb_ALU is
+architecture Behave of tb_Reg16BIT is
 
   ----------------------------------------------------------------
   --  edit the following lines to set the number of i/o's of your
   --  DUT.
   ----------------------------------------------------------------
-  constant number_of_inputs  : integer := 36;  -- # input bits to your design.
-  constant number_of_outputs : integer := 17;  -- # output bits from your design.
+  constant number_of_inputs  : integer := 18;  -- # input bits to your design.
+  constant number_of_outputs : integer := 16;  -- # output bits from your design.
   ----------------------------------------------------------------
   ----------------------------------------------------------------
 
   -- Note that you will have to wrap your design into the DUT
   -- as indicated in class.
-  component DUT_ALU is
+  component DUT_Reg16BIT is
    port(input_vector: in std_logic_vector(number_of_inputs-1 downto 0);    
        	output_vector: out std_logic_vector(number_of_outputs-1 downto 0));
   end component;
@@ -69,7 +69,7 @@ architecture Behave of tb_ALU is
 begin
   process 
     variable err_flag : boolean := false;
-    File INFILE: text open read_mode is "TRACEFILE_ALU.txt";
+    File INFILE: text open read_mode is "TRACEFILE_Reg16BIT.txt";
     FILE OUTFILE: text  open write_mode is "outputs.txt";
 
     -- bit-vectors are read from the file.
@@ -134,7 +134,7 @@ begin
     wait;
   end process;
 
-  DUT_ALU_instance: DUT_ALU 
+  dut_instance: DUT_Reg16BIT 
      	port map(input_vector => input_vector, output_vector => output_vector);
 
 end Behave;
