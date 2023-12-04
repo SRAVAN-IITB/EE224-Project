@@ -38,7 +38,7 @@ architecture BHV of ALU is
 		return diff;
 	end sub;
 	
-	-- Russian peasant multiplication algorithm
+	-- Chinmay's brain!
 	function Mult(A, B: in std_logic_vector(15 downto 0)) 
 	return std_logic_vector is
 		 variable result : std_logic_vector(15 downto 0) := (others => '0');
@@ -104,6 +104,8 @@ architecture BHV of ALU is
 	end bit_IMPLIES;
 
 	begin
+	-- The actual functioning of ALU: Using the OpCode 'Oper', 
+	-- it decides which binary opertion is to be performed between A and B
 	Decide_Oper: process(Oper, DATA1_temp, A, B)
 	begin
 		 case Oper is
