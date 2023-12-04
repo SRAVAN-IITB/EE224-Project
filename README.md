@@ -1,5 +1,5 @@
 # EE224 Course Project: IITB-CPU
-A 16-bit single-cycle CPU described in VHDL and implemented on an FPGA.
+A 16-bit multi-cycle CPU described in VHDL and to be implemented on an FPGA.
 
 This project is part of the course Digital Systems (EE224), at IIT Bombay (2023)
 
