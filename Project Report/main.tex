@@ -11,6 +11,11 @@
 \usepackage{booktabs}  % For better spacing and rules in tables
 \renewcommand{\arraystretch}{1.5}  % Adjust vertical spacing in the table
 \usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,    % Color of internal links
+    urlcolor=blue      % Color of external links
+}
 \usepackage{subcaption}
 \usepackage{mdframed}
 \usepackage{caption}
@@ -95,7 +100,7 @@
 \tableofcontents
 \newpage
 \section{Introduction}
-The IITB-CPU implements 14 instructions and utilises 8 programmer registers, among which the register 7 ($R7$) is used as a program counter or an instruction register. Internally, 17 states are used to implement these instructions and are described in the following section.\\
+The IITB-CPU implements 14 instructions and utilises 8 programmer registers, among which the register 7 ($R7$) is used as a program counter or an instruction register. Internally, 17 states are used to implement these instructions and are described in the following section.
 
 \section{Work Distribution}
 \begin{table}[htb]
@@ -120,7 +125,7 @@ VHDL description of ALU                                                         
 VHDL description of Memory                                                                 & Chinmay Moorjani                     \\ \hline
 VHDL realisation of CPU involving port mapping of components for Datapath            & Chinmay Moorjani                     \\ \hline
 MUX processes and coding of FSM via clock, state-transition and o/p processes    & Chinmay Moorjani                     \\ \hline
-Building Testbenches for each of the VHDL entities and TRACEFILE of ALU                                    & Sravan K Suresh                      \\ \hline
+Building Testbenches and TRACEFILES for each of the VHDL entities                                    & Sravan K Suresh                      \\ \hline
 Cleaning, indentations and comments on all the VHDL codes                                      & Sravan K Suresh                      \\ \hline
 Testing of Final CPU by hard-coded instructions in memory                                  & Chinmay Moorjani and Sravan K Suresh \\ \hline
 Debugging and verification of Final CPU                                                    & Chinmay Moorjani and Sravan K Suresh       \\ \hline
@@ -128,6 +133,8 @@ Report drafting and document organisation                                       
 \end{tabularx}
 \caption{Work Distribution Table}
 \end{table}
+
+Link to the GitHub repository of this project: \href{https://github.com/SRAVAN-IITB/EE224-Project}{\underline{Project Repository}}
 
 \section{States}
 \subsection*{Description}
@@ -150,7 +157,7 @@ The merged states and a short description of each is given below:
 \textbf{M10} & Store required value in specified location (S34) \\ \hline
 \textbf{M11} & Read memory (S43) \\ \hline
 \textbf{M12} & Compute Z (S46) \\ \hline
-\textbf{M13} & If z == 1, then ip = ip+2+(imm6)×2 (S47) \\ \hline
+\textbf{M13} & If $z == 1$, then ip = ip+2+(imm6)×2 (S47) \\ \hline
 \textbf{M14} & Compute and update IP (S51) \\ \hline
 \textbf{M15} & Update IP (S55) \\ \hline
 \textbf{M16} & Update result (S16) \\ \hline
@@ -511,7 +518,52 @@ The testbench for the CPU \texttt{tb\_CPU} generates a clock signal (clk) and a 
 
 \subsection{Testing and Simulation Results}
 The following simulations were obtained when the Memory and Programmer registers were hard-coded with different instructions to test the functioning of our CPU by loading the corresponding Testbenches which were built separately.\\ The following are the simulation results:
+\newpage    
+    \begin{figure}
+        \fbox{%
+            \begin{minipage}{0.8\linewidth}
+                \begin{center}
+                    \includegraphics[width=\linewidth]{Images/sim_Reg_16BIT.png}
+                \end{center}
+                \caption{Simulation showing the perfect functioning of a 16-bit Register}
+            \end{minipage}%
+            }
+    \end{figure}
 
+    \begin{figure}
+        \fbox{%
+            \begin{minipage}{0.8\linewidth}
+                \begin{center}
+                    \includegraphics[width=\linewidth]{Images/Sim_Memory.png}
+                \end{center}
+                \caption{Simulation showing the perfect functioning of entity 'Memory'}
+            \end{minipage}%
+            }
+    \end{figure}
+\newpage
+    \begin{figure}
+        \fbox{%
+            \begin{minipage}{0.9\linewidth}
+                \begin{center}
+                    \includegraphics[width=\linewidth]{Images/Sim_ALU.png}
+                \end{center}
+                \caption{Simulation showing the perfect functioning of ALU that passed its generic Testbench}
+            \end{minipage}%
+            }
+    \end{figure}
+
+    \begin{figure}
+        \fbox{%
+            \begin{minipage}{1.01\linewidth}
+                \begin{center}
+                    \includegraphics[width=\linewidth]{Images/Sim_ADI-ADI-MUL.png}
+                \end{center}
+                \caption{Test Case 1: \texttt{ADI-ADI-MUL}}
+            \end{minipage}%
+            }
+    \end{figure} 
+
+\clearpage
 \newpage
 \section{Datapath}
     \begin{raggedleft}
