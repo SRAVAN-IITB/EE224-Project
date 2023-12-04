@@ -5,8 +5,8 @@ use IEEE.NUMERIC_STD.all;
 entity CPU is
     port (
         Clk, Reset: in std_logic--;
-	--	  Input: in std_logic_vector(15 downto 0);
-	--	  Output: out std_logic_vector(15 downto 0)
+		  Input: in std_logic_vector(15 downto 0);
+		  Output: out std_logic_vector(15 downto 0)
 		    );
 end entity CPU;
 
@@ -62,10 +62,11 @@ architecture struct of CPU is
     component Memory is
         port (
             Address: in std_logic_vector(15 downto 0);
+			   Input:in std_logic_vector(15 downto 0);
             data_write: in std_logic_vector(15 downto 0);
             data_out: out std_logic_vector(15 downto 0);
-            clock, MeM_R, MeM_W: in std_logic
-        );
+				Output:in std_logic_vector(15 downto 0);
+            clock, MeM_R, MeM_W: in std_logic);
     end component Memory;
 
     component ALU is
@@ -76,7 +77,7 @@ architecture struct of CPU is
             C: out std_logic_vector(15 downto 0)
         );
     end component ALU;
-
+	 
     signal IP, T1_data, T2_data, T3_data, Mem_data, IR, BEQ,
 			  M3, M4, M5, M6, M7, M8, DataA, DataB, ALU_data: std_logic_vector(15 downto 0) := (others => '0');  
     signal M2, M9, M10: std_logic_vector(2 downto 0) := (others => '0');
@@ -96,11 +97,13 @@ begin
 	
 	-- Represents the main memory of the CPU, allowing read and write operations.
     MyMemory: Memory port map (Address => M6, 
+	                            Input => Input,
 									 data_write => T2_data, 
 										data_out => Mem_data, 
 											clock => clk, 
 											MeM_W => Mem_W, 
-											MeM_R => Mem_R);
+											MeM_R => Mem_R
+											Output => Output);
 	
 	-- 16-bit register that stores the currently fetched instruction from memory.
     Instruction_Register: Reg_16BIT port map (Reset => Reset, 
@@ -282,6 +285,7 @@ begin
 				  Mem_R <= '0';
 				  T1_W <= '0';
 				  T2_W <= '0';
+				  IP_store <= '0';
 
             when S1=>
                 B <= "00010001001011010001";
@@ -321,6 +325,7 @@ begin
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
+					 IP_store <= '0';
 
             when S6=>
                 B <= "00001010000000000000";
@@ -344,6 +349,7 @@ begin
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
+					 IP_store <= '0';
 
             when S9=>
                 B <= "00000000000000101100";
