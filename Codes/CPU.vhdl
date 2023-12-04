@@ -4,16 +4,17 @@ use IEEE.NUMERIC_STD.all;
 
 entity CPU is
     port (
-        Clk, Reset: in std_logic
-    );
+        Clk, Reset: in std_logic--;
+	--	  Input: in std_logic_vector(15 downto 0);
+	--	  Output: out std_logic_vector(15 downto 0)
+		    );
 end entity CPU;
-	-- Add output port 
+
 architecture struct of CPU is
 
     type state is (rst, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17);
 	
 	-- Declaration of components Reg_File, MUX_8, MUX_4, MUX_2, Memory, ALU
-	-- Flags, memory and all reg except temporary ones check
     component Reg_16BIT is
         port (
             Reset, clk: in std_logic;
@@ -83,7 +84,7 @@ architecture struct of CPU is
     signal Mem_W, Mem_R, Z_flag, T1_W, T2_W, IP_store: std_logic := '0';
     signal B: std_logic_vector(19 downto 0) := (others => '0');
     signal state_present: state := rst;
-	 signal state_next: state;
+	 signal state_next: state := rst;
 
 begin
 	-- 16BIT register responsible for keeping track of 
@@ -174,8 +175,10 @@ begin
             when S1=>
                 if ((IR(15 downto 12) = "1010") OR (IR(15 downto 12) = "1011")) then
                     state_next <= S17;
-                else
-                    state_next <= S2;
+				    elsif IR(15 downto 0) = "0000000000000000" then
+					     state_next <= S1;
+					 else
+					     state_next <= S2;
                 end if;
 
             when S2=>
@@ -564,3 +567,4 @@ begin
 	end process MUX10;
 
 end struct;
+
