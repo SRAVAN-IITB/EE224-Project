@@ -13,7 +13,8 @@ component CPU is
 		    );
 end component CPU;
 
-	signal clk, rst, op, ip: std_logic;
+	signal clk, rst: std_logic;
+	op, ip: std_logic_vector(15 downto 0);
 	
 	begin
 	   ip <= "0000000000000100";
