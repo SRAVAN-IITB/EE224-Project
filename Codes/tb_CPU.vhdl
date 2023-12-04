@@ -26,7 +26,7 @@ architecture arch of tb_CPU is
 		-- Assertion process
 		end_sim : process
 		begin
-			wait for 1000ns;
+			wait for 2000ns;
 			ASSERT False
 			REPORT "Simulation ended"
 			SEVERITY failure;
