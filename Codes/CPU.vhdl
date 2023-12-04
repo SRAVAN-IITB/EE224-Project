@@ -102,7 +102,7 @@ begin
 										data_out => Mem_data, 
 											clock => clk, 
 											MeM_W => Mem_W, 
-											MeM_R => Mem_R
+											MeM_R => Mem_R,
 											Output => Output);
 	
 	-- 16-bit register that stores the currently fetched instruction from memory.
