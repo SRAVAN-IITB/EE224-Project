@@ -14,7 +14,7 @@ This project is part of the course Digital Systems (EE224), at IIT Bombay (2023)
 ## Component List
 
 ### ARITHEMATIC UNIT
-1. `alu.vhdl`: combination of ADD and NAND with flag registers(C,Z flags)
+1. `alu.vhdl`: Capable of performing ADD, SUB, MUL, AND, ORA and IMP and uses registers(C,Z flags)
 
 ### MULTIPLEXERS
 #### 1-bit Devices
@@ -35,7 +35,8 @@ This project is part of the course Digital Systems (EE224), at IIT Bombay (2023)
 1. `Memory.vhdl`: Array of 512 8-bit vectors
 
 ### DUT
-`DUT.vhdl`: Top-Level entity
+`DUT_ALU.vhdl`: Top-Level entity for `ALU.vhdl`
+`DUT_Reg16BIT.vhdl`: Top-Level entity for `Reg16BIT.vhdl`
 
 ### MAIN CPU UNIT
 `CPU.vhdl`: Main code
