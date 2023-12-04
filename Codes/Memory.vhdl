@@ -15,28 +15,10 @@ end entity Memory;
 architecture BHV of Memory is
 
 	type array_of_vectors is ARRAY (4095 downto 0) of STD_LOGIC_VECTOR(7 downto 0);
---	signal memory_storage: array_of_vectors := (0 => "01110000", 
---															 1 => "10100010", 
---															 2 => "00000000", 
---															 3 => "00000010", 
---															 4 => "00000000", 
---															 5 => "00000011", 
---															 6 => "00000000", 
---															 7 => "00000100",
---															 8 => "00000000", 
---															 9 => "00000101", 
---															10 => "00000000", 
---															11 => "00000110", 
---															12 => "00000000", 
---															13 => "00000111", 
---															14 => "00000000", 
---															15 => "00001000", 
---															16 => "00000000", 
---															17 => "00001001", 
---															others => "00000000"
---															);
+
 signal memory_storage: array_of_vectors := ( 1 => "00000001",
-															3 => "00000001",
+                                             2 => Input (15 downto 8),
+															3 => Input(7 downto 0),
 															5 => "00000001",
 															7 => "00000001",
 															9 => "00000001",
@@ -118,9 +100,6 @@ signal memory_storage: array_of_vectors := ( 1 => "00000001",
 														others => "00000000");
 															
 	begin
-	
-					memory_storage(2) <= Input(15 downto 8);
-					memory_storage(3) <= Input(7 downto 0);
 	
 	-- Process to write data into the memory storage
 	memory_write: PROCESS(clock, MeM_W, data_write, Address)
