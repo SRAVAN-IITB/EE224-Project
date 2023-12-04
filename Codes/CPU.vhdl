@@ -65,7 +65,7 @@ architecture struct of CPU is
 			   Input:in std_logic_vector(15 downto 0);
             data_write: in std_logic_vector(15 downto 0);
             data_out: out std_logic_vector(15 downto 0);
-				Output:in std_logic_vector(15 downto 0);
+				Output:out std_logic_vector(15 downto 0);
             clock, MeM_R, MeM_W: in std_logic);
     end component Memory;
 
