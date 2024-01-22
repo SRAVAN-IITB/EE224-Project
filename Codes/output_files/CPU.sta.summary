@@ -1,0 +1,329 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'state_present.S12'
+Slack : -15.048
+TNS   : -227.413
+
+Type  : Slow 1200mV 85C Model Setup 'state_present.S13'
+Slack : -14.694
+TNS   : -482.881
+
+Type  : Slow 1200mV 85C Model Setup 'state_present.S3'
+Slack : -14.318
+TNS   : -410.493
+
+Type  : Slow 1200mV 85C Model Setup 'state_present.S1'
+Slack : -9.737
+TNS   : -289.738
+
+Type  : Slow 1200mV 85C Model Setup 'state_present.S17'
+Slack : -7.221
+TNS   : -196.617
+
+Type  : Slow 1200mV 85C Model Setup 'Clk'
+Slack : -5.371
+TNS   : -16597.772
+
+Type  : Slow 1200mV 85C Model Setup 'Reg_16BIT:Instruction_Register|reg_store[12]'
+Slack : -5.316
+TNS   : -60.526
+
+Type  : Slow 1200mV 85C Model Hold 'Reg_16BIT:Instruction_Register|reg_store[12]'
+Slack : -2.025
+TNS   : -2.677
+
+Type  : Slow 1200mV 85C Model Hold 'state_present.S13'
+Slack : -0.366
+TNS   : -1.480
+
+Type  : Slow 1200mV 85C Model Hold 'state_present.S1'
+Slack : 0.047
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'state_present.S12'
+Slack : 0.252
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'state_present.S3'
+Slack : 0.431
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'state_present.S17'
+Slack : 0.481
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'Clk'
+Slack : 0.850
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'state_present.S12'
+Slack : -6.880
+TNS   : -113.684
+
+Type  : Slow 1200mV 85C Model Recovery 'state_present.S3'
+Slack : -6.564
+TNS   : -107.917
+
+Type  : Slow 1200mV 85C Model Recovery 'state_present.S13'
+Slack : -5.713
+TNS   : -93.725
+
+Type  : Slow 1200mV 85C Model Removal 'state_present.S13'
+Slack : -0.581
+TNS   : -1.161
+
+Type  : Slow 1200mV 85C Model Removal 'state_present.S3'
+Slack : -0.470
+TNS   : -0.828
+
+Type  : Slow 1200mV 85C Model Removal 'state_present.S12'
+Slack : -0.209
+TNS   : -0.209
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Clk'
+Slack : -3.000
+TNS   : -6431.301
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Reg_16BIT:Instruction_Register|reg_store[12]'
+Slack : -0.393
+TNS   : -25.143
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'state_present.S1'
+Slack : 0.260
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'state_present.S17'
+Slack : 0.312
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'state_present.S13'
+Slack : 0.315
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'state_present.S3'
+Slack : 0.330
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'state_present.S12'
+Slack : 0.354
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'state_present.S12'
+Slack : -14.242
+TNS   : -219.542
+
+Type  : Slow 1200mV 0C Model Setup 'state_present.S13'
+Slack : -13.915
+TNS   : -462.058
+
+Type  : Slow 1200mV 0C Model Setup 'state_present.S3'
+Slack : -13.585
+TNS   : -393.717
+
+Type  : Slow 1200mV 0C Model Setup 'state_present.S1'
+Slack : -9.305
+TNS   : -276.116
+
+Type  : Slow 1200mV 0C Model Setup 'state_present.S17'
+Slack : -7.036
+TNS   : -191.695
+
+Type  : Slow 1200mV 0C Model Setup 'Reg_16BIT:Instruction_Register|reg_store[12]'
+Slack : -5.139
+TNS   : -59.173
+
+Type  : Slow 1200mV 0C Model Setup 'Clk'
+Slack : -5.076
+TNS   : -15507.419
+
+Type  : Slow 1200mV 0C Model Hold 'Reg_16BIT:Instruction_Register|reg_store[12]'
+Slack : -1.850
+TNS   : -2.694
+
+Type  : Slow 1200mV 0C Model Hold 'state_present.S13'
+Slack : -0.541
+TNS   : -2.774
+
+Type  : Slow 1200mV 0C Model Hold 'state_present.S1'
+Slack : -0.043
+TNS   : -0.049
+
+Type  : Slow 1200mV 0C Model Hold 'state_present.S12'
+Slack : 0.275
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'state_present.S17'
+Slack : 0.435
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'state_present.S3'
+Slack : 0.511
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'Clk'
+Slack : 0.735
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'state_present.S12'
+Slack : -6.570
+TNS   : -108.541
+
+Type  : Slow 1200mV 0C Model Recovery 'state_present.S3'
+Slack : -6.279
+TNS   : -103.255
+
+Type  : Slow 1200mV 0C Model Recovery 'state_present.S13'
+Slack : -5.423
+TNS   : -88.893
+
+Type  : Slow 1200mV 0C Model Removal 'state_present.S13'
+Slack : -0.582
+TNS   : -1.219
+
+Type  : Slow 1200mV 0C Model Removal 'state_present.S3'
+Slack : -0.434
+TNS   : -0.775
+
+Type  : Slow 1200mV 0C Model Removal 'state_present.S12'
+Slack : -0.198
+TNS   : -0.198
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Clk'
+Slack : -3.000
+TNS   : -6431.301
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Reg_16BIT:Instruction_Register|reg_store[12]'
+Slack : -0.526
+TNS   : -22.061
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'state_present.S1'
+Slack : 0.072
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'state_present.S3'
+Slack : 0.101
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'state_present.S17'
+Slack : 0.112
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'state_present.S13'
+Slack : 0.158
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'state_present.S12'
+Slack : 0.172
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'state_present.S12'
+Slack : -5.382
+TNS   : -76.363
+
+Type  : Fast 1200mV 0C Model Setup 'state_present.S13'
+Slack : -5.258
+TNS   : -156.448
+
+Type  : Fast 1200mV 0C Model Setup 'state_present.S3'
+Slack : -5.088
+TNS   : -137.540
+
+Type  : Fast 1200mV 0C Model Setup 'state_present.S1'
+Slack : -3.547
+TNS   : -93.637
+
+Type  : Fast 1200mV 0C Model Setup 'state_present.S17'
+Slack : -2.594
+TNS   : -65.183
+
+Type  : Fast 1200mV 0C Model Setup 'Clk'
+Slack : -2.049
+TNS   : -5843.949
+
+Type  : Fast 1200mV 0C Model Setup 'Reg_16BIT:Instruction_Register|reg_store[12]'
+Slack : -1.640
+TNS   : -17.203
+
+Type  : Fast 1200mV 0C Model Hold 'Reg_16BIT:Instruction_Register|reg_store[12]'
+Slack : -0.676
+TNS   : -1.227
+
+Type  : Fast 1200mV 0C Model Hold 'state_present.S13'
+Slack : -0.199
+TNS   : -0.557
+
+Type  : Fast 1200mV 0C Model Hold 'state_present.S3'
+Slack : -0.129
+TNS   : -0.129
+
+Type  : Fast 1200mV 0C Model Hold 'state_present.S12'
+Slack : -0.099
+TNS   : -0.099
+
+Type  : Fast 1200mV 0C Model Hold 'state_present.S17'
+Slack : 0.022
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'state_present.S1'
+Slack : 0.228
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Clk'
+Slack : 0.357
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'state_present.S12'
+Slack : -2.354
+TNS   : -38.248
+
+Type  : Fast 1200mV 0C Model Recovery 'state_present.S3'
+Slack : -2.232
+TNS   : -35.957
+
+Type  : Fast 1200mV 0C Model Recovery 'state_present.S13'
+Slack : -1.960
+TNS   : -31.533
+
+Type  : Fast 1200mV 0C Model Removal 'state_present.S3'
+Slack : -0.233
+TNS   : -0.480
+
+Type  : Fast 1200mV 0C Model Removal 'state_present.S13'
+Slack : -0.229
+TNS   : -0.468
+
+Type  : Fast 1200mV 0C Model Removal 'state_present.S12'
+Slack : -0.097
+TNS   : -0.101
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Clk'
+Slack : -3.000
+TNS   : -4541.349
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Reg_16BIT:Instruction_Register|reg_store[12]'
+Slack : 0.032
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'state_present.S3'
+Slack : 0.287
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'state_present.S13'
+Slack : 0.291
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'state_present.S12'
+Slack : 0.308
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'state_present.S1'
+Slack : 0.339
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'state_present.S17'
+Slack : 0.339
+TNS   : 0.000
+
+------------------------------------------------------------

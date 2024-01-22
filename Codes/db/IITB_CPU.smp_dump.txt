@@ -1,21 +1,22 @@
 
 State Machine - |CPU|state_present
-Name state_present.S17 state_present.S16 state_present.S15 state_present.S14 state_present.S13 state_present.S12 state_present.S11 state_present.S10 state_present.S9 state_present.S8 state_present.S7 state_present.S6 state_present.S5 state_present.S4 state_present.S3 state_present.S2 state_present.S1 state_present.rst 
-state_present.rst 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-state_present.S1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
-state_present.S2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
-state_present.S3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
-state_present.S4 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
-state_present.S5 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
-state_present.S6 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
-state_present.S7 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
-state_present.S8 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
-state_present.S9 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
-state_present.S10 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
-state_present.S11 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
-state_present.S12 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
-state_present.S13 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state_present.S14 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state_present.S15 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state_present.S16 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state_present.S17 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Name state_present.S1delay state_present.S17 state_present.S16 state_present.S15 state_present.S14 state_present.S13 state_present.S12 state_present.S11 state_present.S10 state_present.S9 state_present.S8 state_present.S7 state_present.S6 state_present.S5 state_present.S4 state_present.S3 state_present.S2 state_present.S1 state_present.rst 
+state_present.rst 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state_present.S1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state_present.S2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state_present.S3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state_present.S4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state_present.S5 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state_present.S6 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state_present.S7 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state_present.S8 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state_present.S9 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state_present.S10 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state_present.S11 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state_present.S12 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state_present.S13 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state_present.S14 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state_present.S15 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state_present.S16 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state_present.S17 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state_present.S1delay 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 

@@ -7,26 +7,26 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/simulation/modelsim
+Z0 dC:/EE214_2023/Factorial_4/simulation/modelsim
 Ealu
-Z1 w1701643157
+Z1 w1701666132
 Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
 Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
 R0
-Z5 8C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/ALU.vhdl
-Z6 FC:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/ALU.vhdl
+Z5 8C:/EE214_2023/Factorial_4/ALU.vhdl
+Z6 FC:/EE214_2023/Factorial_4/ALU.vhdl
 l0
 L5
 V[EPEP3LWS=_QAmfV63[133
 !s100 ;WS52;;0nB7_XIgFlOn9g3
 Z7 OV;C;10.5b;63
 31
-Z8 !s110 1701648307
+Z8 !s110 1705269002
 !i10b 1
-Z9 !s108 1701648307.000000
-Z10 !s90 -reportprogress|300|-93|-work|work|C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/ALU.vhdl|
-Z11 !s107 C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/ALU.vhdl|
+Z9 !s108 1705269002.000000
+Z10 !s90 -reportprogress|300|-93|-work|work|C:/EE214_2023/Factorial_4/ALU.vhdl|
+Z11 !s107 C:/EE214_2023/Factorial_4/ALU.vhdl|
 !i113 1
 Z12 o-93 -work work
 Z13 tExplicit 1 CvgOpt 0
@@ -50,24 +50,24 @@ R11
 R12
 R13
 Ecpu
-Z14 w1701636566
+Z14 w1705267174
 R2
 R3
 R4
 R0
-Z15 8C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/CPU.vhdl
-Z16 FC:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/CPU.vhdl
+Z15 8C:/EE214_2023/Factorial_4/CPU.vhdl
+Z16 FC:/EE214_2023/Factorial_4/CPU.vhdl
 l0
 L5
-VcNoT3IQ46m3D5=eo1ZF^51
-!s100 fM[MU4NY8PIRGLNX_0dKQ3
+VR5[X6fHaRkDYg1[^MCVG52
+!s100 8fm`WT;0W_giPofhIFKjM2
 R7
 31
-R8
+Z17 !s110 1705269003
 !i10b 1
-R9
-Z17 !s90 -reportprogress|300|-93|-work|work|C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/CPU.vhdl|
-Z18 !s107 C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/CPU.vhdl|
+Z18 !s108 1705269003.000000
+Z19 !s90 -reportprogress|300|-93|-work|work|C:/EE214_2023/Factorial_4/CPU.vhdl|
+Z20 !s107 C:/EE214_2023/Factorial_4/CPU.vhdl|
 !i113 1
 R12
 R13
@@ -75,40 +75,40 @@ Astruct
 R2
 R3
 R4
-Z19 DEx4 work 3 cpu 0 22 cNoT3IQ46m3D5=eo1ZF^51
-l87
-L11
-Z20 V8^6=idl5aaXZN5aXR5lWY1
-Z21 !s100 O=6iGFnj1jW<BYHjRS7l52
+Z21 DEx4 work 3 cpu 0 22 R5[X6fHaRkDYg1[^MCVG52
+l91
+L13
+Z22 V]5lW87;M6JmbWG3Zf;i]o1
+Z23 !s100 [F75]4dBiADIdAz`1?KWS2
+R7
+31
+R17
+!i10b 1
+R18
+R19
+R20
+!i113 1
+R12
+R13
+Ememory
+Z24 w1705268913
+R2
+R3
+R4
+R0
+Z25 8C:/EE214_2023/Factorial_4/Memory.vhdl
+Z26 FC:/EE214_2023/Factorial_4/Memory.vhdl
+l0
+L5
+V5@[IO?VokkTf:?XhCM96d3
+!s100 S0?baYELY]N4@ombcCM`52
 R7
 31
 R8
 !i10b 1
 R9
-R17
-R18
-!i113 1
-R12
-R13
-Ememory
-Z22 w1701646747
-R2
-R3
-R4
-R0
-Z23 8C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Memory.vhdl
-Z24 FC:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Memory.vhdl
-l0
-L5
-Vb`4lhZIiP5^U9V>d<=6E?1
-!s100 SfCVaz8jOi:R9M>DzTOVV1
-R7
-31
-Z25 !s110 1701648306
-!i10b 1
-Z26 !s108 1701648306.000000
-Z27 !s90 -reportprogress|300|-93|-work|work|C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Memory.vhdl|
-Z28 !s107 C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Memory.vhdl|
+Z27 !s90 -reportprogress|300|-93|-work|work|C:/EE214_2023/Factorial_4/Memory.vhdl|
+Z28 !s107 C:/EE214_2023/Factorial_4/Memory.vhdl|
 !i113 1
 R12
 R13
@@ -116,39 +116,39 @@ Abhv
 R2
 R3
 R4
-DEx4 work 6 memory 0 22 b`4lhZIiP5^U9V>d<=6E?1
-l44
-L13
-VL?WaK1cUIA=@k8E<_mMSU2
-!s100 QCdN=TZkYH=[NDY:h5eT`2
+DEx4 work 6 memory 0 22 5@[IO?VokkTf:?XhCM96d3
+l31
+L15
+VV?[UYA5I8aL3BcNkNkWM@1
+!s100 eQfb:T54PY@`zWf3Inz[:2
 R7
 31
-R25
+R8
 !i10b 1
-R26
+R9
 R27
 R28
 !i113 1
 R12
 R13
 Emux_2
-Z29 w1701281504
+R1
 R3
 R4
 R0
-Z30 8C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/MUX_2.vhdl
-Z31 FC:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/MUX_2.vhdl
+Z29 8C:/EE214_2023/Factorial_4/MUX_2.vhdl
+Z30 FC:/EE214_2023/Factorial_4/MUX_2.vhdl
 l0
 L4
 V?]Phb75=[11n1:oSN]IM@3
 !s100 OmLJQhTj]C_SWGKCW?HfF3
 R7
 31
-R25
+R8
 !i10b 1
-R26
-Z32 !s90 -reportprogress|300|-93|-work|work|C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/MUX_2.vhdl|
-Z33 !s107 C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/MUX_2.vhdl|
+R9
+Z31 !s90 -reportprogress|300|-93|-work|work|C:/EE214_2023/Factorial_4/MUX_2.vhdl|
+Z32 !s107 C:/EE214_2023/Factorial_4/MUX_2.vhdl|
 !i113 1
 R12
 R13
@@ -162,33 +162,33 @@ V1AlQb5<i`cWlo`ZC;fcNU2
 !s100 R09<_ZklUZkfZDTm]C]471
 R7
 31
-R25
+R8
 !i10b 1
-R26
+R9
+R31
 R32
-R33
 !i113 1
 R12
 R13
 Ereg_16bit
-Z34 w1701466448
+R1
 R2
 R3
 R4
 R0
-Z35 8C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_16BIT.vhdl
-Z36 FC:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_16BIT.vhdl
+Z33 8C:/EE214_2023/Factorial_4/Reg_16BIT.vhdl
+Z34 FC:/EE214_2023/Factorial_4/Reg_16BIT.vhdl
 l0
 L5
 VFTLjb90ldjTFXNYRI8nJX2
 !s100 7BN?[h`PXY0]6BHCMjjkS2
 R7
 31
-R25
+Z35 !s110 1705269001
 !i10b 1
-R26
-Z37 !s90 -reportprogress|300|-93|-work|work|C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_16BIT.vhdl|
-Z38 !s107 C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_16BIT.vhdl|
+Z36 !s108 1705269001.000000
+Z37 !s90 -reportprogress|300|-93|-work|work|C:/EE214_2023/Factorial_4/Reg_16BIT.vhdl|
+Z38 !s107 C:/EE214_2023/Factorial_4/Reg_16BIT.vhdl|
 !i113 1
 R12
 R13
@@ -203,32 +203,32 @@ V6Y=E3V?>kPQPzC<5?YMBB3
 !s100 E4=;Rmo_NLOa_RDUTie_D0
 R7
 31
-R25
+R35
 !i10b 1
-R26
+R36
 R37
 R38
 !i113 1
 R12
 R13
 Ereg_file
-Z39 w1701635910
+R1
 R3
 R4
 R0
-Z40 8C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_File.vhdl
-Z41 FC:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_File.vhdl
+Z39 8C:/EE214_2023/Factorial_4/Reg_File.vhdl
+Z40 FC:/EE214_2023/Factorial_4/Reg_File.vhdl
 l0
 L4
 VGYgFmZH4c1`2>94i3gi6E3
 !s100 kS0dTJ]fl9:Yz7lzSG`XI2
 R7
 31
-R25
+R35
 !i10b 1
-R26
-Z42 !s90 -reportprogress|300|-93|-work|work|C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_File.vhdl|
-Z43 !s107 C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_File.vhdl|
+R36
+Z41 !s90 -reportprogress|300|-93|-work|work|C:/EE214_2023/Factorial_4/Reg_File.vhdl|
+Z42 !s107 C:/EE214_2023/Factorial_4/Reg_File.vhdl|
 !i113 1
 R12
 R13
@@ -242,32 +242,32 @@ VU4[h[11a5[PhRf93Dg5G23
 !s100 PbVnVLZZ>k]16imU33O3M0
 R7
 31
-R25
+R35
 !i10b 1
-R26
+R36
+R41
 R42
-R43
 !i113 1
 R12
 R13
 Etb_cpu
-Z44 w1701646878
+Z43 w1705261875
 R3
 R4
 R0
-Z45 8C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/tb_CPU.vhdl
-Z46 FC:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/tb_CPU.vhdl
+Z44 8C:/EE214_2023/Factorial_4/tb_CPU.vhdl
+Z45 FC:/EE214_2023/Factorial_4/tb_CPU.vhdl
 l0
 L4
 VAF]M7cIHe@WnYe85VQ0>=1
 !s100 S8U=GFYB1S?ZcaWoe4fg23
 R7
 31
-R8
+R17
 !i10b 1
 R9
-Z47 !s90 -reportprogress|300|-93|-work|work|C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/tb_CPU.vhdl|
-Z48 !s107 C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/tb_CPU.vhdl|
+Z46 !s90 -reportprogress|300|-93|-work|work|C:/EE214_2023/Factorial_4/tb_CPU.vhdl|
+Z47 !s107 C:/EE214_2023/Factorial_4/tb_CPU.vhdl|
 !i113 1
 R12
 R13
@@ -275,17 +275,17 @@ Aarch
 R3
 R4
 DEx4 work 6 tb_cpu 0 22 AF]M7cIHe@WnYe85VQ0>=1
-l14
+l19
 L7
-V=:oRS;]`IH_IghLDh3nFJ3
-!s100 @8m<_Z70F;O]`P9Ng>lS01
+V_B145Ck]DkGWfOh4h_L4_3
+!s100 AD`j]n;SkZi]50fP_^`j<2
 R7
 31
-R8
+R17
 !i10b 1
 R9
+R46
 R47
-R48
 !i113 1
 R12
 R13

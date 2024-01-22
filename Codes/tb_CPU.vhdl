@@ -32,7 +32,7 @@ end component CPU;
 		-- Assertion process
 		end_sim : process
 		begin
-			wait for 2000ns;
+			wait for 10000ns;
 			ASSERT False
 			REPORT "Simulation ended"
 			SEVERITY failure;

@@ -1,140 +1,102 @@
-library std;
-use std.textio.all;
-
-library ieee;
-use ieee.std_logic_1164.all;
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
 
 entity tb_ALU is
-end entity;
-architecture Behave of tb_ALU is
+end entity tb_ALU;
 
-  ----------------------------------------------------------------
-  --  edit the following lines to set the number of i/o's of your
-  --  DUT.
-  ----------------------------------------------------------------
-  constant number_of_inputs  : integer := 36;  -- # input bits to your design.
-  constant number_of_outputs : integer := 17;  -- # output bits from your design.
-  ----------------------------------------------------------------
-  ----------------------------------------------------------------
-
-  -- Note that you will have to wrap your design into the DUT
-  -- as indicated in class.
-  component DUT_ALU is
-   port(input_vector: in std_logic_vector(number_of_inputs-1 downto 0);    
-       	output_vector: out std_logic_vector(number_of_outputs-1 downto 0));
+architecture testbench of tb_ALU is
+  signal clk, rst: std_logic := '0';
+  signal A, B, C: std_logic_vector(15 downto 0);
+  signal Oper: std_logic_vector(3 downto 0);
+  signal Z: std_logic;
+  
+  component ALU
+    port(
+      A, B: in STD_LOGIC_VECTOR(15 downto 0);
+      Oper: in STD_LOGIC_VECTOR(3 downto 0);
+      Z: out STD_LOGIC;
+      C: out STD_LOGIC_VECTOR(15 downto 0)
+    );
   end component;
 
-
-  signal input_vector  : std_logic_vector(number_of_inputs-1 downto 0);
-  signal output_vector : std_logic_vector(number_of_outputs-1 downto 0);
-
-  -- create a constrained string
-  function to_string(x: string) return string is
-      variable ret_val: string(1 to x'length);
-      alias lx : string (1 to x'length) is x;
-  begin  
-      ret_val := lx;
-      return(ret_val);
-  end to_string;
-
-  -- bit-vector to std-logic-vector and vice-versa
-  function to_std_logic_vector(x: bit_vector) return std_logic_vector is
-     alias lx: bit_vector(1 to x'length) is x;
-     variable ret_val: std_logic_vector(1 to x'length);
-  begin
-     for I in 1 to x'length loop
-        if(lx(I) = '1') then
-          ret_val(I) := '1';
-        else
-          ret_val(I) := '0';
-        end if;
-     end loop; 
-     return ret_val;
-  end to_std_logic_vector;
-
-  function to_bit_vector(x: std_logic_vector) return bit_vector is
-     alias lx: std_logic_vector(1 to x'length) is x;
-     variable ret_val: bit_vector(1 to x'length);
-  begin
-     for I in 1 to x'length loop
-        if(lx(I) = '1') then
-          ret_val(I) := '1';
-        else
-          ret_val(I) := '0';
-        end if;
-     end loop; 
-     return ret_val;
-  end to_bit_vector;
-
 begin
-  process 
-    variable err_flag : boolean := false;
-    File INFILE: text open read_mode is "TRACEFILE_ALU.txt";
-    FILE OUTFILE: text  open write_mode is "outputs.txt";
 
-    -- bit-vectors are read from the file.
-    variable input_vector_var: bit_vector (number_of_inputs-1 downto 0);
-    variable output_vector_var: bit_vector (number_of_outputs-1 downto 0);
-    variable output_mask_var: bit_vector (number_of_outputs-1 downto 0);
-
-    -- for comparison of output with expected-output
-    variable output_comp_var: std_logic_vector (number_of_outputs-1 downto 0);
-    constant ZZZZ : std_logic_vector(number_of_outputs-1 downto 0) := (others => '0');
-
-    -- for read/write.
-    variable INPUT_LINE: Line;
-    variable OUTPUT_LINE: Line;
-    variable LINE_COUNT: integer := 0;
-
-    
+  -- Clock process
+  clk_process : process
   begin
-    while not endfile(INFILE) loop 
-	  -- will read a new line every 5ns, apply input,
-	  -- wait for 1 ns for circuit to settle.
-	  -- read output.
-
-
-          LINE_COUNT := LINE_COUNT + 1;
-
-
-	  -- read input at current time.
-	  readLine (INFILE, INPUT_LINE);
-          read (INPUT_LINE, input_vector_var);
-          read (INPUT_LINE, output_vector_var);
-          read (INPUT_LINE, output_mask_var);
-	
-	  -- apply input.
-          input_vector <= to_std_logic_vector(input_vector_var);
-
-	  -- wait for the circuit to settle 
-	  wait for 15 ns;
-
-	  -- check output.
-          output_comp_var := (to_std_logic_vector(output_mask_var) and 
-					(output_vector xor to_std_logic_vector(output_vector_var)));
-	  if (output_comp_var  /= ZZZZ) then
-             write(OUTPUT_LINE,to_string("ERROR: line "));
-             write(OUTPUT_LINE, LINE_COUNT);
-             writeline(OUTFILE, OUTPUT_LINE);
-             err_flag := true;
-          end if;
-
-          write(OUTPUT_LINE, to_bit_vector(input_vector));
-          write(OUTPUT_LINE, to_string(" "));
-          write(OUTPUT_LINE, to_bit_vector(output_vector));
-          writeline(OUTFILE, OUTPUT_LINE);
-
-	  -- advance time by 4 ns.
-	  wait for 4 ns;
+    while now < 1000 ns loop
+      clk <= not clk;
+      wait for 5 ns;
     end loop;
-
-    assert (err_flag) report "SUCCESS, all tests passed." severity note;
-    assert (not err_flag) report "FAILURE, some tests failed." severity error;
-
     wait;
-  end process;
+  end process clk_process;
 
-  DUT_ALU_instance: DUT_ALU 
-     	port map(input_vector => input_vector, output_vector => output_vector);
+  -- Reset process
+  rst_process: process
+  begin
+    rst <= '1';
+    wait for 20 ns;
+    rst <= '0';
+    wait;
+  end process rst_process;
 
-end Behave;
+  -- Stimulus process
+  stimulus: process
+  begin
+    wait until rising_edge(clk);
+    
+    -- Test ADD operation
+    A <= "0000000000000011";
+    B <= "0000000000000010";
+    Oper <= "0000";
+    wait until rising_edge(clk);
+    assert Z = '0' and C = "0000000000000101" report "Test ADD failed" severity error;
+
+    -- Test SUB operation
+    A <= "0000000000000101";
+    B <= "0000000000000010";
+    Oper <= "0010";
+    wait until rising_edge(clk);
+    assert Z = '0' and C = "0000000000000011" report "Test SUB failed" severity error;
+
+    -- Test MULT operation
+    A <= "0000000000000111";
+    B <= "0000000000001100";
+    Oper <= "0011";
+    wait until rising_edge(clk);
+    assert Z = '0' and C = "0000000001010100" report "Test MULT failed" severity error;
+
+    -- Test BIT AND operation
+    A <= "0000000000001010";
+    B <= "0000000000001100";
+    Oper <= "0100";
+    wait until rising_edge(clk);
+    assert Z = '0' and C = "0000000000001000" report "Test AND failed" severity error;
+
+    -- Test BIT OR operation
+    A <= "0000000000001010";
+    B <= "0000000000001100";
+    Oper <= "0101";
+    wait until rising_edge(clk);
+    assert Z = '0' and C = "0000000000001110" report "Test OR failed" severity error;
+
+    -- Test BIT IMPLIES operation
+    A <= "0000000000001010";
+    B <= "0000000000001100";
+    Oper <= "0110";
+    wait until rising_edge(clk);
+    assert Z = '0' and C = "1111111111111101" report "Test IMPLIES failed" severity error;
+	 report "All tests passed successfully!" severity note;
+    wait;
+  end process stimulus;
+
+  dut: ALU port map(
+    A => A,
+    B => B,
+    Oper => Oper,
+    Z => Z,
+    C => C
+  );
+
+end architecture testbench;

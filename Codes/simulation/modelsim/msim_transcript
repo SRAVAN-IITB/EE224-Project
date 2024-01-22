@@ -10,105 +10,106 @@
 # Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vcom -93 -work work {C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_File.vhdl}
+# vcom -93 -work work {C:/EE214_2023/Factorial_4/Reg_File.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 05:35:06 on Dec 04,2023
-# vcom -reportprogress 300 -93 -work work C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_File.vhdl 
+# Start time: 03:20:01 on Jan 15,2024
+# vcom -reportprogress 300 -93 -work work C:/EE214_2023/Factorial_4/Reg_File.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity Reg_File
 # -- Compiling architecture BHV of Reg_File
-# End time: 05:35:06 on Dec 04,2023, Elapsed time: 0:00:00
+# End time: 03:20:01 on Jan 15,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_16BIT.vhdl}
+# vcom -93 -work work {C:/EE214_2023/Factorial_4/Reg_16BIT.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 05:35:06 on Dec 04,2023
-# vcom -reportprogress 300 -93 -work work C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Reg_16BIT.vhdl 
+# Start time: 03:20:01 on Jan 15,2024
+# vcom -reportprogress 300 -93 -work work C:/EE214_2023/Factorial_4/Reg_16BIT.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity Reg_16BIT
 # -- Compiling architecture bhv of Reg_16BIT
-# End time: 05:35:06 on Dec 04,2023, Elapsed time: 0:00:00
+# End time: 03:20:01 on Jan 15,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/MUX_2.vhdl}
+# vcom -93 -work work {C:/EE214_2023/Factorial_4/MUX_2.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 05:35:06 on Dec 04,2023
-# vcom -reportprogress 300 -93 -work work C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/MUX_2.vhdl 
+# Start time: 03:20:02 on Jan 15,2024
+# vcom -reportprogress 300 -93 -work work C:/EE214_2023/Factorial_4/MUX_2.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity MUX_2
 # -- Compiling architecture BHV of MUX_2
-# End time: 05:35:06 on Dec 04,2023, Elapsed time: 0:00:00
+# End time: 03:20:02 on Jan 15,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Memory.vhdl}
+# vcom -93 -work work {C:/EE214_2023/Factorial_4/Memory.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 05:35:06 on Dec 04,2023
-# vcom -reportprogress 300 -93 -work work C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/Memory.vhdl 
+# Start time: 03:20:02 on Jan 15,2024
+# vcom -reportprogress 300 -93 -work work C:/EE214_2023/Factorial_4/Memory.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity Memory
 # -- Compiling architecture BHV of Memory
-# End time: 05:35:06 on Dec 04,2023, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/CPU.vhdl}
+# ** Warning: C:/EE214_2023/Factorial_4/Memory.vhdl(19): (vcom-1013) Initial value of "memory_storage" depends on value of signal "Input".
+# End time: 03:20:02 on Jan 15,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# vcom -93 -work work {C:/EE214_2023/Factorial_4/CPU.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 05:35:06 on Dec 04,2023
-# vcom -reportprogress 300 -93 -work work C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/CPU.vhdl 
+# Start time: 03:20:02 on Jan 15,2024
+# vcom -reportprogress 300 -93 -work work C:/EE214_2023/Factorial_4/CPU.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity CPU
 # -- Compiling architecture struct of CPU
-# End time: 05:35:06 on Dec 04,2023, Elapsed time: 0:00:00
+# End time: 03:20:02 on Jan 15,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/ALU.vhdl}
+# vcom -93 -work work {C:/EE214_2023/Factorial_4/ALU.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 05:35:07 on Dec 04,2023
-# vcom -reportprogress 300 -93 -work work C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/ALU.vhdl 
+# Start time: 03:20:02 on Jan 15,2024
+# vcom -reportprogress 300 -93 -work work C:/EE214_2023/Factorial_4/ALU.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity ALU
 # -- Compiling architecture BHV of ALU
-# End time: 05:35:07 on Dec 04,2023, Elapsed time: 0:00:00
+# End time: 03:20:02 on Jan 15,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-# vcom -93 -work work {C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/tb_CPU.vhdl}
+# vcom -93 -work work {C:/EE214_2023/Factorial_4/tb_CPU.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 05:35:07 on Dec 04,2023
-# vcom -reportprogress 300 -93 -work work C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/tb_CPU.vhdl 
+# Start time: 03:20:02 on Jan 15,2024
+# vcom -reportprogress 300 -93 -work work C:/EE214_2023/Factorial_4/tb_CPU.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity tb_CPU
 # -- Compiling architecture arch of tb_CPU
-# ** Warning: C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/tb_CPU.vhdl(29): (vcom-1207) An abstract literal and an identifier must have a separator between them.
-# End time: 05:35:07 on Dec 04,2023, Elapsed time: 0:00:00
+# ** Warning: C:/EE214_2023/Factorial_4/tb_CPU.vhdl(35): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 03:20:03 on Jan 15,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 1
-# vcom -93 -work work {C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/CPU.vhdl}
+# vcom -93 -work work {C:/EE214_2023/Factorial_4/CPU.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 05:35:07 on Dec 04,2023
-# vcom -reportprogress 300 -93 -work work C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/CPU.vhdl 
+# Start time: 03:20:03 on Jan 15,2024
+# vcom -reportprogress 300 -93 -work work C:/EE214_2023/Factorial_4/CPU.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity CPU
 # -- Compiling architecture struct of CPU
-# End time: 05:35:07 on Dec 04,2023, Elapsed time: 0:00:00
+# End time: 03:20:03 on Jan 15,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  tb_CPU
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs=""+acc"" tb_CPU 
-# Start time: 05:35:07 on Dec 04,2023
+# Start time: 03:20:04 on Jan 15,2024
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -122,18 +123,14 @@
 # Loading work.mux_2(bhv)
 # 
 # add wave *
-# view structure
-# .main_pane.structure.interior.cs.body.struct
-# view signals
-# .main_pane.objects.interior.cs.body.tree
-# run -all
-# ** Failure: Simulation ended
-#    Time: 1 us  Iteration: 0  Process: /tb_cpu/end_sim File: C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/tb_CPU.vhdl
-# Break in Process end_sim at C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/tb_CPU.vhdl line 31
+# Break key hit
+# Control-C interrupt
+# 
+# MACRO ./CPU_run_msim_rtl_vhdl.do PAUSED at line 20
 add wave -r /*
 run -all
 # ** Failure: Simulation ended
-#    Time: 2 us  Iteration: 0  Process: /tb_cpu/end_sim File: C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/tb_CPU.vhdl
-# Break in Process end_sim at C:/Users/ASUS/OneDrive - Indian Institute of Technology Bombay/ACADS/SEMESTER-3/EE-224/PROJECT/Codes_Sravmay/tb_CPU.vhdl line 31
-# End time: 05:56:24 on Dec 04,2023, Elapsed time: 0:21:17
+#    Time: 10 us  Iteration: 0  Process: /tb_cpu/end_sim File: C:/EE214_2023/Factorial_4/tb_CPU.vhdl
+# Break in Process end_sim at C:/EE214_2023/Factorial_4/tb_CPU.vhdl line 37
+# End time: 03:23:28 on Jan 15,2024, Elapsed time: 0:03:24
 # Errors: 0, Warnings: 0
