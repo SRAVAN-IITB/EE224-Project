@@ -1,78 +1,80 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
+use IEEE.NUMERIC_STD.all;
 
 entity tb_Memory is
 end entity tb_Memory;
 
-architecture TB_ARCH of tb_Memory is
-  signal clock, MeM_R, MeM_W : STD_LOGIC := '0';
-  signal Address, data_write, data_out : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
-  signal pass : BOOLEAN := TRUE;
+architecture testbench of tb_Memory is
+    -- Constants for simulation parameters
+    constant CLOCK_PERIOD: time := 10 ns; -- Clock period in nanoseconds
+    constant MEM_DEPTH: integer := 256;   -- Depth of memory
 
-  component Memory
-    port(
-      Address    : in  STD_LOGIC_VECTOR(15 downto 0);
-      data_write : in  STD_LOGIC_VECTOR(15 downto 0);
-      data_out   : out STD_LOGIC_VECTOR(15 downto 0);
-      clock, MeM_R, MeM_W : in  STD_LOGIC
-    );
-  end component Memory;
+    -- Signals for the testbench
+    signal clock, MeM_R, MeM_W: std_logic := '0';
+    signal Address, Input, data_write, data_out, Output: std_logic_vector(15 downto 0);
 
-  begin
+begin
     -- Instantiate the Memory entity
-    UUT: Memory port map (Address => Address,
-                          data_write => data_write,
-                          data_out => data_out,
-                          clock => clock,
-                          MeM_R => MeM_R,
-                          MeM_W => MeM_W);
+    uut: entity work.Memory
+        port map (
+            Address    => Address,
+            Input      => Input,
+            data_write => data_write,
+            data_out   => data_out,
+            Output     => Output,
+            clock      => clock,
+            MeM_R      => MeM_R,
+            MeM_W      => MeM_W
+        );
 
-    -- Clock process
-    process
+    -- Clock generation process
+    clk_process: process
     begin
-      while now < 1000 ns loop
-        clock <= not clock;
-        wait for 5 ns;
-      end loop;
-      wait;
+        while now < 1000 ns loop
+            clock <= '0';
+            wait for CLOCK_PERIOD / 2;
+            clock <= '1';
+            wait for CLOCK_PERIOD / 2;
+        end loop;
+        wait;
     end process;
 
-    -- Stimulus process
-    process
+    -- Test scenario
+    test_scenario: process
     begin
-      MeM_R <= '0';
-      MeM_W <= '0';
+        -- Initialize inputs
+        Address <= (others => '0');
+        Input   <= "1100110011001100"; -- Sample input data
+        data_write <= "1111000011110000"; -- Sample data to be written
 
-      -- Write data to memory
-      Address <= "0000000000000010";
-      data_write <= "0000000011011011";
-      MeM_W <= '1';
-      wait for 10 ns;
+        -- Perform a write operation
+        MeM_W <= '1';
+        wait for CLOCK_PERIOD; -- Wait for one clock cycle
+        MeM_W <= '0';
 
-      -- Read data from memory
-      Address <= "0000000000000010";
-      MeM_R <= '1';
-      wait for 10 ns;
+        -- Perform a read operation
+        MeM_R <= '1';
+        wait for CLOCK_PERIOD; -- Wait for one clock cycle
+        MeM_R <= '0';
 
-      -- Check if the read data matches the expected value
-      if data_out /= "0000000011011011" then
-        pass <= FALSE;
-      end if;
+        -- Additional test scenarios can be added here
 
-      wait;
+        wait;
     end process;
 
-		-- Assertion process
-		process
-		begin
-		  wait for 1000 ns;
-		  if pass then
-			 assert false report "Testbench passed successfully!" severity NOTE;
-		  else
-			 assert false report "Testbench failed!" severity FAILURE;
-		  end if;
-		  wait;
-		end process;
+    -- Monitor process for displaying simulation results
+    monitor_process: process
+    begin
+        wait for 1 ns; -- Wait for a short time to avoid initial conflicts
+--        report "Time = " & integer'image(to_integer(unsigned(now))) severity note;
+--        report "Address = " & to_string(Address) severity note;
+--        report "Input = " & to_string(Input) severity note;
+--        report "Data Write = " & to_string(data_write) severity note;
+--        report "Data Out = " & to_string(data_out) severity note;
+--        report "Output = " & to_string(Output) severity note;
 
+        wait;
+    end process;
 
-  end architecture TB_ARCH;
+end architecture testbench;

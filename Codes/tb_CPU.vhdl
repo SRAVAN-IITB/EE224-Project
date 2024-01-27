@@ -5,13 +5,13 @@ entity tb_CPU is
 end entity tb_CPU; 
 
 architecture arch of tb_CPU is 
-component CPU is
-    port (
-        Clk, Reset: in std_logic;
-		  Input: in std_logic_vector(15 downto 0);
-		  Output: out std_logic_vector(15 downto 0)
-		    );
-end component CPU;
+	component CPU is
+		 port (
+			  Clk, Reset: in std_logic;
+			  Input: in std_logic_vector(15 downto 0);
+			  Output: out std_logic_vector(15 downto 0)
+				 );
+	end component CPU;
 
 	signal clk, rst: std_logic;
 	signal op, ip: std_logic_vector(15 downto 0);
@@ -32,7 +32,7 @@ end component CPU;
 		-- Assertion process
 		end_sim : process
 		begin
-			wait for 2000ns;
+			wait for 10000ns;
 			ASSERT False
 			REPORT "Simulation ended"
 			SEVERITY failure;
