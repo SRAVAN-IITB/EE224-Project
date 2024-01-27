@@ -5,7 +5,7 @@ entity Reg_File is
 	port(Address_Read1, Address_Read2, Address_Write: in std_logic_vector(2 downto 0);
 			data_Write 							  				: in std_logic_vector(15 downto 0);
 			Clk, Reset 							  				: in std_logic;
-			data_Read1, data_Read2 						   : out std_logic_vector(15 downto 0)
+			data_Read1, data_Read2, R7_dataold		   : out std_logic_vector(15 downto 0)
 		 );
 end entity;
 
@@ -102,5 +102,6 @@ architecture BHV of Reg_File is
 	  end case;
 	 end PROCESS;
 	data_Read2 <= data_Read2_temp; -- data_Read2 out
+	R7_dataold <= R7;
 		 
 end BHV;

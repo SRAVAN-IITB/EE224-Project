@@ -1,0 +1,83 @@
+commit ab9e097ab63dad1c226f7e357e4f23f1f0c8ecd5
+Author: Sravan K Suresh <132607113+SRAVAN-IITB@users.noreply.github.com>
+Date:   Sat Jan 27 15:09:26 2024 +0530
+
+    These were the changes made from Chinmay's room with the presence of Singhvi just before the board worked for the first time!
+
+commit 54e30cb2e2bdf885723cd0c76e6854180baba85e
+Author: Sravan K Suresh <132607113+SRAVAN-IITB@users.noreply.github.com>
+Date:   Sat Jan 27 14:42:49 2024 +0530
+
+    These are the changes made before adjusting for all the latest requirements such as word addressablility and PC = R7
+
+commit b4999aaf3fb2f4d02ab7f7d12d6a934d48ec5d73
+Author: krimsonscorpio-manga <134318809+krimsonscorpio-manga@users.noreply.github.com>
+Date:   Mon Dec 4 20:14:28 2023 +0530
+
+    Update Memory.vhdl
+
+commit 35daf8d378c4e5b3f3f55945e234c528658cc0ab
+Author: krimsonscorpio-manga <134318809+krimsonscorpio-manga@users.noreply.github.com>
+Date:   Mon Dec 4 19:56:11 2023 +0530
+
+    Update CPU.vhdl
+
+commit 6ff9f7ed7fc1b48f2c18731569d8a59646e52606
+Author: krimsonscorpio-manga <134318809+krimsonscorpio-manga@users.noreply.github.com>
+Date:   Mon Dec 4 19:54:38 2023 +0530
+
+    Update CPU.vhdl
+
+commit 5d7a8b99d420addeb551c761ad632817bedfbac2
+Author: krimsonscorpio-manga <134318809+krimsonscorpio-manga@users.noreply.github.com>
+Date:   Mon Dec 4 19:53:56 2023 +0530
+
+    Update CPU.vhdl
+
+commit 18a2ea9e3a773f04c90031e5a9a5efbdcde410c6
+Author: krimsonscorpio-manga <134318809+krimsonscorpio-manga@users.noreply.github.com>
+Date:   Mon Dec 4 19:52:47 2023 +0530
+
+    Update CPU.vhdl
+
+commit eb12336e640959801adee6f8d80cee54fbcd65c8
+Author: krimsonscorpio-manga <134318809+krimsonscorpio-manga@users.noreply.github.com>
+Date:   Mon Dec 4 19:48:59 2023 +0530
+
+    Update Memory.vhdl
+
+commit 5fc217e85045a696d3a28183f13bd081e0327a8c
+Author: krimsonscorpio-manga <134318809+krimsonscorpio-manga@users.noreply.github.com>
+Date:   Mon Dec 4 15:23:16 2023 +0530
+
+    Update Memory.vhdl
+
+commit 0b2b5c31e59a7ada9f59a8d9a7c70004d64c475e
+Author: krimsonscorpio-manga <134318809+krimsonscorpio-manga@users.noreply.github.com>
+Date:   Mon Dec 4 15:22:43 2023 +0530
+
+    Update CPU.vhdl
+
+commit c270fef3eb7caa22c4112b6330eef7957f63d2fc
+Author: krimsonscorpio-manga <134318809+krimsonscorpio-manga@users.noreply.github.com>
+Date:   Mon Dec 4 14:18:12 2023 +0530
+
+    Update CPU.vhdl
+
+commit d843eaff6ea548fdf1db2836d11e704b8debfc7c
+Author: Sravan K Suresh <132607113+SRAVAN-IITB@users.noreply.github.com>
+Date:   Mon Dec 4 14:16:29 2023 +0530
+
+    Add files via upload
+
+commit e60d57f638421600aea9356eff6f621bc5ed96bb
+Author: Sravan K Suresh <132607113+SRAVAN-IITB@users.noreply.github.com>
+Date:   Mon Dec 4 13:57:22 2023 +0530
+
+    Delete Codes directory
+
+commit 3f78df35ca77732a06d2f9f13836920f0943b8fb
+Author: Sravan K Suresh <132607113+SRAVAN-IITB@users.noreply.github.com>
+Date:   Sat Dec 2 15:17:19 2023 +0530
+
+    Add files via upload

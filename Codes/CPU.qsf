@@ -18,7 +18,7 @@
 #
 # Quartus Prime
 # Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-# Date created = 15:05:47  December 02, 2023
+# Date created = 23:29:03  January 22, 2024
 #
 # -------------------------------------------------------------------------- #
 #
@@ -37,32 +37,33 @@
 
 
 set_global_assignment -name FAMILY "MAX 10"
-set_global_assignment -name DEVICE 10M08DAF484C8G
+set_global_assignment -name DEVICE 10M25SAE144C8G
 set_global_assignment -name TOP_LEVEL_ENTITY CPU
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:05:47  DECEMBER 02, 2023"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "23:29:03  JANUARY 22, 2024"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
 set_global_assignment -name VHDL_FILE tb_RegFile.vhdl
+set_global_assignment -name VHDL_FILE tb_Reg16BIT.vhdl
 set_global_assignment -name VHDL_FILE tb_MUX_8.vhdl
 set_global_assignment -name VHDL_FILE tb_MUX_4.vhdl
 set_global_assignment -name VHDL_FILE tb_MUX_2.vhdl
 set_global_assignment -name VHDL_FILE tb_Memory.vhdl
-set_global_assignment -name VHDL_FILE tb_CPU.vhdl
 set_global_assignment -name VHDL_FILE tb_ALU.vhdl
 set_global_assignment -name VHDL_FILE Reg_File.vhdl
 set_global_assignment -name VHDL_FILE Reg_16BIT.vhdl
 set_global_assignment -name VHDL_FILE MUX_8.vhdl
 set_global_assignment -name VHDL_FILE MUX_4.vhdl
 set_global_assignment -name VHDL_FILE MUX_2.vhdl
-set_global_assignment -name VHDL_FILE Memory.vhdl
-set_global_assignment -name VHDL_FILE Gates.vhdl
-set_global_assignment -name VHDL_FILE DUT.vhdl
-set_global_assignment -name VHDL_FILE CPU.vhdl
+set_global_assignment -name VHDL_FILE DUT_Reg16BIT.vhdl
+set_global_assignment -name VHDL_FILE DUT_ALU.vhdl
 set_global_assignment -name VHDL_FILE ALU.vhdl
+set_global_assignment -name VHDL_FILE tb_CPU.vhdl
+set_global_assignment -name VHDL_FILE CPU.vhdl
+set_global_assignment -name VHDL_FILE Memory.vhdl
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
-set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
@@ -70,43 +71,56 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
 set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_CPU.vhdl -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_NAME tb_Regfile.vhdl -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_Regfile.vhdl
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_Regfile -section_id tb_Regfile.vhdl
-set_global_assignment -name EDA_TEST_BENCH_NAME tb_MUX_8.vhdl -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_MUX_8.vhdl
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_MUX_8 -section_id tb_MUX_8.vhdl
-set_global_assignment -name EDA_TEST_BENCH_NAME tb_MUX_4.vhdl -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_MUX_4.vhdl
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_MUX_4 -section_id tb_MUX_4.vhdl
-set_global_assignment -name EDA_TEST_BENCH_NAME tb_MUX_2.vhdl -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_MUX_2.vhdl
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_MUX_2 -section_id tb_MUX_2.vhdl
-set_global_assignment -name EDA_TEST_BENCH_NAME tb_Memory.vhdl -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_Memory.vhdl
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_Memory -section_id tb_Memory.vhdl
 set_global_assignment -name EDA_TEST_BENCH_NAME tb_CPU.vhdl -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_CPU.vhdl
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_CPU -section_id tb_CPU.vhdl
 set_global_assignment -name EDA_TEST_BENCH_NAME tb_ALU.vhdl -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_ALU.vhdl
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME dut_instance -section_id tb_ALU.vhdl
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_ALU -section_id tb_ALU.vhdl
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_Reg16BIT.vhdl -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME dut_instance -section_id tb_Reg16BIT.vhdl
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_Reg16BIT -section_id tb_Reg16BIT.vhdl
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_RegFile.vhdl -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_RegFile.vhdl
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_RegFile -section_id tb_RegFile.vhdl
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_Memory.vhdl -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_Memory.vhdl
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_Memory -section_id tb_Memory.vhdl
+set_global_assignment -name FLOW_ENABLE_POWER_ANALYZER ON
+set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name EDA_TEST_BENCH_FILE Reg_File.vhdl -section_id tb_Regfile.vhdl
-set_global_assignment -name EDA_TEST_BENCH_FILE tb_RegFile.vhdl -section_id tb_Regfile.vhdl
-set_global_assignment -name EDA_TEST_BENCH_FILE MUX_8.vhdl -section_id tb_MUX_8.vhdl
-set_global_assignment -name EDA_TEST_BENCH_FILE tb_MUX_8.vhdl -section_id tb_MUX_8.vhdl
-set_global_assignment -name EDA_TEST_BENCH_FILE tb_MUX_4.vhdl -section_id tb_MUX_4.vhdl
-set_global_assignment -name EDA_TEST_BENCH_FILE MUX_4.vhdl -section_id tb_MUX_4.vhdl
-set_global_assignment -name EDA_TEST_BENCH_FILE tb_MUX_2.vhdl -section_id tb_MUX_2.vhdl
-set_global_assignment -name EDA_TEST_BENCH_FILE MUX_2.vhdl -section_id tb_MUX_2.vhdl
-set_global_assignment -name EDA_TEST_BENCH_FILE tb_Memory.vhdl -section_id tb_Memory.vhdl
-set_global_assignment -name EDA_TEST_BENCH_FILE Memory.vhdl -section_id tb_Memory.vhdl
 set_global_assignment -name EDA_TEST_BENCH_FILE tb_CPU.vhdl -section_id tb_CPU.vhdl
 set_global_assignment -name EDA_TEST_BENCH_FILE CPU.vhdl -section_id tb_CPU.vhdl
-set_global_assignment -name EDA_TEST_BENCH_FILE tb_ALU.vhdl -section_id tb_ALU.vhdl
 set_global_assignment -name EDA_TEST_BENCH_FILE ALU.vhdl -section_id tb_ALU.vhdl
-set_global_assignment -name EDA_TEST_BENCH_FILE TRACEFILE.txt -section_id tb_ALU.vhdl
+set_global_assignment -name EDA_TEST_BENCH_FILE DUT_ALU.vhdl -section_id tb_ALU.vhdl
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_ALU.vhdl -section_id tb_ALU.vhdl
+set_global_assignment -name EDA_TEST_BENCH_FILE TRACEFILE_ALU.txt -section_id tb_ALU.vhdl
+set_global_assignment -name EDA_TEST_BENCH_FILE Reg_16BIT.vhdl -section_id tb_Reg16BIT.vhdl
+set_global_assignment -name EDA_TEST_BENCH_FILE DUT_Reg16BIT.vhdl -section_id tb_Reg16BIT.vhdl
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_Reg16BIT.vhdl -section_id tb_Reg16BIT.vhdl
+set_global_assignment -name EDA_TEST_BENCH_FILE TRACEFILE_Reg16BIT.txt -section_id tb_Reg16BIT.vhdl
+set_global_assignment -name EDA_TEST_BENCH_FILE Reg_File.vhdl -section_id tb_RegFile.vhdl
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_RegFile.vhdl -section_id tb_RegFile.vhdl
+set_global_assignment -name EDA_TEST_BENCH_FILE Memory.vhdl -section_id tb_Memory.vhdl
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_Memory.vhdl -section_id tb_Memory.vhdl
+set_location_assignment PIN_38 -to Input[0]
+set_location_assignment PIN_39 -to Input[1]
+set_location_assignment PIN_41 -to Input[2]
+set_location_assignment PIN_43 -to Input[3]
+set_location_assignment PIN_44 -to Input[4]
+set_location_assignment PIN_45 -to Input[5]
+set_location_assignment PIN_46 -to Input[6]
+set_location_assignment PIN_47 -to Input[7]
+set_location_assignment PIN_26 -to Clk
+set_location_assignment PIN_50 -to Output[0]
+set_location_assignment PIN_52 -to Output[1]
+set_location_assignment PIN_54 -to Output[2]
+set_location_assignment PIN_56 -to Output[3]
+set_location_assignment PIN_57 -to Output[4]
+set_location_assignment PIN_58 -to Output[5]
+set_location_assignment PIN_59 -to Output[6]
+set_location_assignment PIN_60 -to Output[7]
+set_location_assignment PIN_66 -to Reset
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

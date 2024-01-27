@@ -5,14 +5,14 @@ use IEEE.NUMERIC_STD.all;
 entity CPU is
     port (
         Clk, Reset: in std_logic;
-		  Input: in std_logic_vector(15 downto 0);
-		  Output: out std_logic_vector(15 downto 0)
+		  Input: in std_logic_vector(7 downto 0);
+		  Output: out std_logic_vector(7 downto 0)
 		    );
 end entity CPU;
 
 architecture struct of CPU is
 
-    type state is (rst, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17, S1delay);
+    type state is (rst, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17, S1delay, Sx, Sy);
 	
 	-- Declaration of components Reg_File, MUX_8, MUX_4, MUX_2, Memory, ALU
     component Reg_16BIT is
@@ -31,7 +31,8 @@ architecture struct of CPU is
             Address_Write : in std_logic_vector(2 downto 0);
 					data_Write : in std_logic_vector(15 downto 0);
 					data_Read1 : out std_logic_vector(15 downto 0);
-					data_Read2 : out std_logic_vector(15 downto 0)
+					data_Read2 : out std_logic_vector(15 downto 0);
+					R7_dataold : out std_logic_vector(15 downto 0)
         );
     end component Reg_File;
 
@@ -62,10 +63,10 @@ architecture struct of CPU is
     component Memory is
         port (
             Address: in std_logic_vector(15 downto 0);
-			   Input:in std_logic_vector(15 downto 0);
+			   Input:in std_logic_vector(7 downto 0);
             data_write: in std_logic_vector(15 downto 0);
             data_out: out std_logic_vector(15 downto 0);
-				Output:out std_logic_vector(15 downto 0);
+				Output:out std_logic_vector(7 downto 0);
             clock, MeM_R, MeM_W: in std_logic);
     end component Memory;
 
@@ -82,11 +83,12 @@ architecture struct of CPU is
 			  M3, M4, M5, M6, M7, M8, DataA, DataB, ALU_data: std_logic_vector(15 downto 0) := (others => '0');  
     signal M2, M9, M10: std_logic_vector(2 downto 0) := (others => '0');
     signal M1: std_logic_vector(3 downto 0) := (others => '0');
-    signal Mem_W, Mem_R, Z_flag, T1_W, T2_W, IP_store, IR_Write, Z_W, Z_Temp, R7_Push: std_logic := '0';
+    signal Mem_W, Mem_R, Z_flag, T1_W, T2_W, IP_store, IR_Write, Z_W, Z_Temp, R7_Push,R7_old, BM4, BM8: std_logic := '0';
     signal B: std_logic_vector(20 downto 0) := (others => '0');
     signal state_present: state := rst;
 	 signal state_next: state := rst;
 	 signal Mem_data_IR, DataA_T1, DataB_T2, IP_R7: std_logic_vector(15 downto 0) := (others => '0');
+	 signal R7_datastore,R7_datatemp, T4_data, R7_update: std_logic_vector(15 downto 0) := (others => '0');
 
 begin
 	-- 16BIT register responsible for keeping track of 
@@ -120,8 +122,8 @@ begin
 									Address_Write => M2, 
 										data_Write => M3, 
 										data_Read1 => DataA, 
-										data_Read2 => DataB
-											);
+										data_Read2 => DataB,
+										R7_dataold => R7_datatemp);
 	
 	-- These temporary registers (Temporary_Register1, Temporary_Register2, Temporary_Register3) 
 	-- serve as storage for intermediate values during computation.													
@@ -139,6 +141,11 @@ begin
 														 Reset => Reset, 
 													 data_in  => M7, 
 													 data_out => T3_data);
+													 
+	 Temporary_Register4: Reg_16BIT port map (Clk => Clk, 
+														 Reset => Reset, 
+													 data_in  => R7_datastore, 
+													 data_out => T4_data);
 	
 	-- Arithmetic Logic Unit (ALU) (Arithmetic) performs arithmetic and logic operations on 
 	-- two input operands (A and B) based on the specified operation (Oper).
@@ -156,6 +163,13 @@ begin
 									I(0) => IP(j), 
 										Y => BEQ(j));
     end generate BEQ1;
+	 
+	 R7BT: for j in 0 to 15 generate
+        MUXB: MUX_2 port map (S => Z_Flag, 
+									I(1) => IP(j), 
+									I(0) => R7_datatemp(j), 
+										Y => R7_update(j));
+    end generate R7BT;
 
 	 -- The following processes help integrate the FSM and Datapath for our CPU!
     clock_proc: process(clk, reset)
@@ -210,7 +224,7 @@ begin
                 state_next <= S4;
 
             when S4 =>
-                state_next <= S1;
+                state_next <= Sx;
 
             when S5 =>
                 case IR(15 downto 12) is
@@ -228,7 +242,7 @@ begin
                 state_next <= S7;
 
             when S7 =>
-                state_next <= S1;
+                state_next <= Sx;
 
             when S8 =>
                 case IR(15 downto 12) is
@@ -241,31 +255,37 @@ begin
                 end case;
 
             when S9 =>
-                state_next <= S1;
+                state_next <= Sx;
 
             when S10 =>
-                state_next <= S1;
+                state_next <= Sx;
 
             when S11 =>
-                state_next <= S1;
+                state_next <= Sx;
 
             when S12 =>
                 state_next <= S13;
 
             when S13 =>
-                state_next <= S1;
+                state_next <= Sx;
 
             when S14 =>
-                state_next <= S1;
+                state_next <= Sx;
 
             when S15 =>
-                state_next <= S1;
+                state_next <= Sx;
 
             when S16 =>
-                state_next <= S1;
+                state_next <= Sx;
 
             when S17 =>
                 state_next <= S5;
+					 
+			   when Sx =>
+                state_next <= Sy;
+					 
+			   when Sy =>
+                state_next <= S1;
 
             when others =>
                 NULL;
@@ -283,6 +303,8 @@ begin
 		  IR_Write <= '0';
 		  Z_W <= '0';
 		  R7_Push <= '0';
+		  R7_old <= '0';
+		  BM4 <= '0';
 
         case state_present is
 		  
@@ -296,6 +318,9 @@ begin
 				  IR_Write <= '0';
 				  Z_W <= '0';
 				  R7_Push <= '0';
+				  R7_old <= '0';
+				  BM4 <= '0';
+				  BM8 <= '0';
 				
 				when S1=>
 				   B <= "010000001000000000000";
@@ -307,6 +332,9 @@ begin
 					IR_Write <= '1';
 					Z_W <= '0';
 					R7_Push <= '1';
+					R7_old <= '0';
+					BM4 <= '0';
+					BM8 <= '0';
 				
             when S1delay=>
                 B <= "010010001001011010001";
@@ -318,6 +346,9 @@ begin
 					 IR_Write <= '1';
 					 Z_W <= '0';
 					 R7_Push <= '1';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S2=>
                 B <= "010000000000000000000";
@@ -329,6 +360,9 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '1';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S3=>
                 B <= "010000100010100000011";
@@ -340,6 +374,9 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '1';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S4=>
                 B <= "010000000000000010100";
@@ -351,6 +388,9 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S5=>
                 B <= "010000100011100000000";
@@ -362,6 +402,9 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S6=>
                 B <= "010001010000000000000";
@@ -373,6 +416,9 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S7=>
                 B <= "010000000000000011100";
@@ -384,6 +430,9 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S8=>
                 B <= "110000000000001101100";
@@ -395,6 +444,9 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S9=>
                 B <= "010000000000000101100";
@@ -406,6 +458,9 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S10=>
                 B <= "010000000000000111100";
@@ -417,6 +472,9 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S11=>
                 B <= "010000010000000000000";
@@ -428,6 +486,9 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S12=>
                 B <= "010000000010100000010";
@@ -439,6 +500,9 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '1';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '0';
 
             when S13=>
                 B <= "110100000100111010001";
@@ -450,6 +514,8 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
 
             when S14=>
                 B <= "110010000101111010001";
@@ -461,6 +527,8 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
 
             when S15=>
                 B <= "010110000000001010000";
@@ -472,6 +540,8 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
 
             when S16=>
                 B <= "010000000000000011000";
@@ -483,6 +553,8 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
 
             when S17=>
                 B <= "101000000000000000000";
@@ -494,6 +566,37 @@ begin
 					 IR_Write <= '0';
 					 Z_W <= '0';
 					 R7_Push <= '0';
+					 R7_old <= '1';
+					 BM4 <= '0';
+					 BM8 <= '0';
+					 
+				when Sx=>
+				    B <= "000000000110010000010";
+					 Mem_W <= '0';
+                Mem_R <= '0';
+                T1_W <= '0';
+                T2_W <= '0';
+					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '1';
+					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '1';
+					 BM8 <= '0';
+					 
+				when Sy=>
+				    B <= "000010000000000000000";
+					 Mem_W <= '0';
+                Mem_R <= '0';
+                T1_W <= '0';
+                T2_W <= '0';
+					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
+					 R7_old <= '0';
+					 BM4 <= '0';
+					 BM8 <= '1';
 
             when others =>
                 NULL;
@@ -528,6 +631,15 @@ begin
 		      IP_R7 <= IP_R7;
 		  end if;
 	 end process R7_proc;
+	 
+	 R7_proc2: process (R7_old, R7_datatemp, R7_datastore)
+	 begin
+	     if (R7_old ='1') then
+		      R7_datastore <= R7_datatemp;
+		  else
+		      R7_datastore <= R7_datatemp;
+		  end if;
+	 end process R7_proc2;
 	 
 	 
 	 T1_proc: process (T1_W, DataA, DataA_T1)
@@ -598,12 +710,14 @@ begin
 
 	MUX4: process (B, M4, IP, T1_data, DataB)
 	begin
-		 if ((B(8) = '0') and (B(7) = '1')) then
+		 if ((BM4 = '0') and (B(8) = '0') and (B(7) = '1')) then
 			  M4 <= IP;
-		 elsif ((B(8) = '1') and (B(7) = '0')) then
+		 elsif ((BM4 = '0') and (B(8) = '1') and (B(7) = '0')) then
 			  M4 <= T1_data;
-		 elsif ((B(8) = '1') and (B(7) = '1')) then
+		 elsif ((BM4 = '0') and (B(8) = '1') and (B(7) = '1')) then
 			  M4 <= DataB;
+		 elsif ((BM4 = '1') and (B(8) = '0') and (B(7) = '1')) then
+			  M4 <= R7_datatemp;
 		 else
 			  M4 <= M4;
 		 end if;
@@ -633,6 +747,8 @@ begin
 			  elsif (IR(8) = '1') then
 					M5 <= "111111" & IR(8 downto 0) & "0";
 			  end if;
+		 elsif ((B(11) = '1') and (B(10) = '1') and (B(9) = '0')) then
+		         M5 <= T4_data;
 		 else
 			  M5 <= M5;
 		 end if;
@@ -662,12 +778,14 @@ begin
 
 	MUX8: process (B, M8, ALU_data, BEQ, T2_data)
 	begin
-		 if ((B(17) = '0') and (B(16) = '1')) then
+		 if ((BM8 = '0') and (B(17) = '0') and (B(16) = '1')) then
 			  M8 <= ALU_data;
-		 elsif ((B(17) = '1') and (B(16) = '0')) then
+		 elsif ((BM8 = '0') and (B(17) = '1') and (B(16) = '0')) then
 			  M8 <= BEQ;
-		 elsif ((B(17) = '1') and (B(16) = '1')) then
+		 elsif ((BM8 = '0') and (B(17) = '1') and (B(16) = '1')) then
 			  M8 <= T2_data;
+		 elsif ((BM8 = '1') and (B(17) = '0') and (B(16) = '1')) then
+			  M8 <= R7_update;
 		 else
 			  M8 <= M8;
 		 end if;
@@ -696,6 +814,5 @@ begin
 			  M10 <= M10;
 		 end if;
 	end process MUX10;
-
+	
 end struct;
-
