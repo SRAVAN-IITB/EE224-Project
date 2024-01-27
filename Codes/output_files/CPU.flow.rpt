@@ -1,5 +1,5 @@
 Flow report for CPU
-Mon Dec 04 05:12:19 2023
+Wed Jan 24 01:47:00 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,24 +40,24 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Mon Dec 04 05:12:19 2023       ;
+; Flow Status                        ; Successful - Wed Jan 24 01:47:00 2024       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; CPU                                         ;
 ; Top-level Entity Name              ; CPU                                         ;
 ; Family                             ; MAX 10                                      ;
-; Device                             ; 10M08DAF484C8G                              ;
+; Device                             ; 10M25SAE144C8G                              ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 0                                           ;
-;     Total combinational functions  ; 0                                           ;
-;     Dedicated logic registers      ; 0                                           ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 2                                           ;
+; Total logic elements               ; 5,915 / 24,960 ( 24 % )                     ;
+;     Total combinational functions  ; 3,926 / 24,960 ( 16 % )                     ;
+;     Dedicated logic registers      ; 4,341 / 24,960 ( 17 % )                     ;
+; Total registers                    ; 4341                                        ;
+; Total pins                         ; 18 / 101 ( 18 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
-; Embedded Multiplier 9-bit elements ; 0                                           ;
-; Total PLLs                         ; 0                                           ;
-; UFM blocks                         ; 0                                           ;
-; ADC blocks                         ; 0                                           ;
+; Total memory bits                  ; 0 / 691,200 ( 0 % )                         ;
+; Embedded Multiplier 9-bit elements ; 0 / 110 ( 0 % )                             ;
+; Total PLLs                         ; 0 / 1 ( 0 % )                               ;
+; UFM blocks                         ; 0 / 1 ( 0 % )                               ;
+; ADC blocks                         ; 0 / 1 ( 0 % )                               ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -66,68 +66,63 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/04/2023 05:11:21 ;
+; Start date & time ; 01/24/2024 01:43:39 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; CPU                 ;
 +-------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                              ;
-+--------------------------------------+----------------------------------------+---------------+-------------+-----------------+
-; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id      ;
-+--------------------------------------+----------------------------------------+---------------+-------------+-----------------+
-; COMPILER_SIGNATURE_ID                ; 1096415463609.170164688109384          ; --            ; --          ; --              ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_Memory.vhdl  ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_MUX_8.vhdl   ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_CPU.vhdl     ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_ALU.vhdl     ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_MUX_4.vhdl   ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_Regfile.vhdl ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_MUX_2.vhdl   ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; tb_CPU.vhdl                            ; --            ; --          ; eda_simulation  ;
-; EDA_OUTPUT_DATA_FORMAT               ; Vhdl                                   ; --            ; --          ; eda_simulation  ;
-; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (VHDL)                 ; <None>        ; --          ; --              ;
-; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --          ; eda_simulation  ;
-; EDA_TEST_BENCH_FILE                  ; tb_Memory.vhdl                         ; --            ; --          ; tb_Memory.vhdl  ;
-; EDA_TEST_BENCH_FILE                  ; Memory.vhdl                            ; --            ; --          ; tb_Memory.vhdl  ;
-; EDA_TEST_BENCH_FILE                  ; MUX_8.vhdl                             ; --            ; --          ; tb_MUX_8.vhdl   ;
-; EDA_TEST_BENCH_FILE                  ; tb_MUX_8.vhdl                          ; --            ; --          ; tb_MUX_8.vhdl   ;
-; EDA_TEST_BENCH_FILE                  ; tb_CPU.vhdl                            ; --            ; --          ; tb_CPU.vhdl     ;
-; EDA_TEST_BENCH_FILE                  ; CPU.vhdl                               ; --            ; --          ; tb_CPU.vhdl     ;
-; EDA_TEST_BENCH_FILE                  ; tb_ALU.vhdl                            ; --            ; --          ; tb_ALU.vhdl     ;
-; EDA_TEST_BENCH_FILE                  ; ALU.vhdl                               ; --            ; --          ; tb_ALU.vhdl     ;
-; EDA_TEST_BENCH_FILE                  ; TRACEFILE.txt                          ; --            ; --          ; tb_ALU.vhdl     ;
-; EDA_TEST_BENCH_FILE                  ; tb_MUX_4.vhdl                          ; --            ; --          ; tb_MUX_4.vhdl   ;
-; EDA_TEST_BENCH_FILE                  ; MUX_4.vhdl                             ; --            ; --          ; tb_MUX_4.vhdl   ;
-; EDA_TEST_BENCH_FILE                  ; Reg_File.vhdl                          ; --            ; --          ; tb_Regfile.vhdl ;
-; EDA_TEST_BENCH_FILE                  ; tb_RegFile.vhdl                        ; --            ; --          ; tb_Regfile.vhdl ;
-; EDA_TEST_BENCH_FILE                  ; tb_MUX_2.vhdl                          ; --            ; --          ; tb_MUX_2.vhdl   ;
-; EDA_TEST_BENCH_FILE                  ; MUX_2.vhdl                             ; --            ; --          ; tb_MUX_2.vhdl   ;
-; EDA_TEST_BENCH_MODULE_NAME           ; tb_Memory                              ; --            ; --          ; tb_Memory.vhdl  ;
-; EDA_TEST_BENCH_MODULE_NAME           ; tb_MUX_8                               ; --            ; --          ; tb_MUX_8.vhdl   ;
-; EDA_TEST_BENCH_MODULE_NAME           ; tb_CPU                                 ; --            ; --          ; tb_CPU.vhdl     ;
-; EDA_TEST_BENCH_MODULE_NAME           ; tb_ALU                                 ; --            ; --          ; tb_ALU.vhdl     ;
-; EDA_TEST_BENCH_MODULE_NAME           ; tb_MUX_4                               ; --            ; --          ; tb_MUX_4.vhdl   ;
-; EDA_TEST_BENCH_MODULE_NAME           ; tb_Regfile                             ; --            ; --          ; tb_Regfile.vhdl ;
-; EDA_TEST_BENCH_MODULE_NAME           ; tb_MUX_2                               ; --            ; --          ; tb_MUX_2.vhdl   ;
-; EDA_TEST_BENCH_NAME                  ; tb_Regfile.vhdl                        ; --            ; --          ; eda_simulation  ;
-; EDA_TEST_BENCH_NAME                  ; tb_MUX_8.vhdl                          ; --            ; --          ; eda_simulation  ;
-; EDA_TEST_BENCH_NAME                  ; tb_MUX_4.vhdl                          ; --            ; --          ; eda_simulation  ;
-; EDA_TEST_BENCH_NAME                  ; tb_MUX_2.vhdl                          ; --            ; --          ; eda_simulation  ;
-; EDA_TEST_BENCH_NAME                  ; tb_Memory.vhdl                         ; --            ; --          ; eda_simulation  ;
-; EDA_TEST_BENCH_NAME                  ; tb_CPU.vhdl                            ; --            ; --          ; eda_simulation  ;
-; EDA_TEST_BENCH_NAME                  ; tb_ALU.vhdl                            ; --            ; --          ; eda_simulation  ;
-; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --          ; eda_simulation  ;
-; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --          ; --              ;
-; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --          ; --              ;
-; PARTITION_COLOR                      ; -- (Not supported for targeted family) ; --            ; --          ; Top             ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family) ; --            ; --          ; Top             ;
-; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family) ; --            ; --          ; Top             ;
-; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                    ; --            ; --          ; --              ;
-; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --              ;
-; PROJECT_OUTPUT_DIRECTORY             ; output_files                           ; --            ; --          ; --              ;
-+--------------------------------------+----------------------------------------+---------------+-------------+-----------------+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                               ;
++--------------------------------------+----------------------------------------+---------------+-------------+------------------+
+; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id       ;
++--------------------------------------+----------------------------------------+---------------+-------------+------------------+
+; COMPILER_SIGNATURE_ID                ; 1096415463609.170604081936652          ; --            ; --          ; --               ;
+; EDA_DESIGN_INSTANCE_NAME             ; dut_instance                           ; --            ; --          ; tb_Reg16BIT.vhdl ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_Memory.vhdl   ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_CPU.vhdl      ;
+; EDA_DESIGN_INSTANCE_NAME             ; dut_instance                           ; --            ; --          ; tb_ALU.vhdl      ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_RegFile.vhdl  ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; tb_CPU.vhdl                            ; --            ; --          ; eda_simulation   ;
+; EDA_OUTPUT_DATA_FORMAT               ; Vhdl                                   ; --            ; --          ; eda_simulation   ;
+; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (VHDL)                 ; <None>        ; --          ; --               ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --          ; eda_simulation   ;
+; EDA_TEST_BENCH_FILE                  ; Reg_16BIT.vhdl                         ; --            ; --          ; tb_Reg16BIT.vhdl ;
+; EDA_TEST_BENCH_FILE                  ; DUT_Reg16BIT.vhdl                      ; --            ; --          ; tb_Reg16BIT.vhdl ;
+; EDA_TEST_BENCH_FILE                  ; tb_Reg16BIT.vhdl                       ; --            ; --          ; tb_Reg16BIT.vhdl ;
+; EDA_TEST_BENCH_FILE                  ; TRACEFILE_Reg16BIT.txt                 ; --            ; --          ; tb_Reg16BIT.vhdl ;
+; EDA_TEST_BENCH_FILE                  ; Memory.vhdl                            ; --            ; --          ; tb_Memory.vhdl   ;
+; EDA_TEST_BENCH_FILE                  ; tb_Memory.vhdl                         ; --            ; --          ; tb_Memory.vhdl   ;
+; EDA_TEST_BENCH_FILE                  ; tb_CPU.vhdl                            ; --            ; --          ; tb_CPU.vhdl      ;
+; EDA_TEST_BENCH_FILE                  ; CPU.vhdl                               ; --            ; --          ; tb_CPU.vhdl      ;
+; EDA_TEST_BENCH_FILE                  ; ALU.vhdl                               ; --            ; --          ; tb_ALU.vhdl      ;
+; EDA_TEST_BENCH_FILE                  ; DUT_ALU.vhdl                           ; --            ; --          ; tb_ALU.vhdl      ;
+; EDA_TEST_BENCH_FILE                  ; tb_ALU.vhdl                            ; --            ; --          ; tb_ALU.vhdl      ;
+; EDA_TEST_BENCH_FILE                  ; TRACEFILE_ALU.txt                      ; --            ; --          ; tb_ALU.vhdl      ;
+; EDA_TEST_BENCH_FILE                  ; Reg_File.vhdl                          ; --            ; --          ; tb_RegFile.vhdl  ;
+; EDA_TEST_BENCH_FILE                  ; tb_RegFile.vhdl                        ; --            ; --          ; tb_RegFile.vhdl  ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_Reg16BIT                            ; --            ; --          ; tb_Reg16BIT.vhdl ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_Memory                              ; --            ; --          ; tb_Memory.vhdl   ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_CPU                                 ; --            ; --          ; tb_CPU.vhdl      ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_ALU                                 ; --            ; --          ; tb_ALU.vhdl      ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_RegFile                             ; --            ; --          ; tb_RegFile.vhdl  ;
+; EDA_TEST_BENCH_NAME                  ; tb_CPU.vhdl                            ; --            ; --          ; eda_simulation   ;
+; EDA_TEST_BENCH_NAME                  ; tb_ALU.vhdl                            ; --            ; --          ; eda_simulation   ;
+; EDA_TEST_BENCH_NAME                  ; tb_Reg16BIT.vhdl                       ; --            ; --          ; eda_simulation   ;
+; EDA_TEST_BENCH_NAME                  ; tb_RegFile.vhdl                        ; --            ; --          ; eda_simulation   ;
+; EDA_TEST_BENCH_NAME                  ; tb_Memory.vhdl                         ; --            ; --          ; eda_simulation   ;
+; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --          ; eda_simulation   ;
+; FLOW_ENABLE_POWER_ANALYZER           ; On                                     ; Off           ; --          ; --               ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --          ; --               ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --          ; --               ;
+; PARTITION_COLOR                      ; -- (Not supported for targeted family) ; --            ; --          ; Top              ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family) ; --            ; --          ; Top              ;
+; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family) ; --            ; --          ; Top              ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                    ; --            ; --          ; --               ;
+; POWER_DEFAULT_INPUT_IO_TOGGLE_RATE   ; 12.5 %                                 ; 12.5%         ; --          ; --               ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --               ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                           ; --            ; --          ; --               ;
++--------------------------------------+----------------------------------------+---------------+-------------+------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -135,8 +130,13 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:58     ; 1.0                     ; 5059 MB             ; 00:00:54                           ;
-; Total                ; 00:00:58     ; --                      ; --                  ; 00:00:54                           ;
+; Analysis & Synthesis ; 00:00:18     ; 1.0                     ; 4896 MB             ; 00:00:18                           ;
+; Fitter               ; 00:02:44     ; 1.4                     ; 6643 MB             ; 00:03:15                           ;
+; Assembler            ; 00:00:02     ; 1.0                     ; 4708 MB             ; 00:00:02                           ;
+; Power Analyzer       ; 00:00:05     ; 4.0                     ; 5042 MB             ; 00:00:16                           ;
+; Timing Analyzer      ; 00:00:05     ; 5.1                     ; 4996 MB             ; 00:00:15                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4697 MB             ; 00:00:01                           ;
+; Total                ; 00:03:15     ; --                      ; --                  ; 00:04:07                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -146,6 +146,11 @@ refer to the applicable agreement for further details.
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
 ; Analysis & Synthesis ; DESKTOP-QQSR5LJ  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; DESKTOP-QQSR5LJ  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; DESKTOP-QQSR5LJ  ; Windows 10 ; 10.0       ; x86_64         ;
+; Power Analyzer       ; DESKTOP-QQSR5LJ  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; DESKTOP-QQSR5LJ  ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; DESKTOP-QQSR5LJ  ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -153,6 +158,11 @@ refer to the applicable agreement for further details.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off IITB_CPU -c CPU
+quartus_fit --read_settings_files=off --write_settings_files=off IITB_CPU -c CPU
+quartus_asm --read_settings_files=off --write_settings_files=off IITB_CPU -c CPU
+quartus_pow --read_settings_files=off --write_settings_files=off IITB_CPU -c CPU
+quartus_sta IITB_CPU -c CPU
+quartus_eda --read_settings_files=off --write_settings_files=off IITB_CPU -c CPU
 
 
 
