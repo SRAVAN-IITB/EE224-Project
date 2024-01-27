@@ -128,7 +128,7 @@ begin
 	  wait for 4 ns;
     end loop;
 
-    assert (err_flag) report "SUCCESS, all tests passed." severity note;
+    assert (err_flag) report "SUCCESS! all tests passed." severity note;
     assert (not err_flag) report "FAILURE, some tests failed." severity error;
 
     wait;

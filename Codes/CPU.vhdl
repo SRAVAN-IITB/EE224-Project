@@ -12,7 +12,7 @@ end entity CPU;
 
 architecture struct of CPU is
 
-    type state is (rst, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17);
+    type state is (rst, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17, S1delay);
 	
 	-- Declaration of components Reg_File, MUX_8, MUX_4, MUX_2, Memory, ALU
     component Reg_16BIT is
@@ -82,10 +82,11 @@ architecture struct of CPU is
 			  M3, M4, M5, M6, M7, M8, DataA, DataB, ALU_data: std_logic_vector(15 downto 0) := (others => '0');  
     signal M2, M9, M10: std_logic_vector(2 downto 0) := (others => '0');
     signal M1: std_logic_vector(3 downto 0) := (others => '0');
-    signal Mem_W, Mem_R, Z_flag, T1_W, T2_W, IP_store: std_logic := '0';
-    signal B: std_logic_vector(19 downto 0) := (others => '0');
+    signal Mem_W, Mem_R, Z_flag, T1_W, T2_W, IP_store, IR_Write, Z_W, Z_Temp, R7_Push: std_logic := '0';
+    signal B: std_logic_vector(20 downto 0) := (others => '0');
     signal state_present: state := rst;
 	 signal state_next: state := rst;
+	 signal Mem_data_IR, DataA_T1, DataB_T2, IP_R7: std_logic_vector(15 downto 0) := (others => '0');
 
 begin
 	-- 16BIT register responsible for keeping track of 
@@ -108,7 +109,7 @@ begin
 	-- 16-bit register that stores the currently fetched instruction from memory.
     Instruction_Register: Reg_16BIT port map (Reset => Reset, 
 																Clk => clk, 
-														  data_in => Mem_data, 
+														  data_in => Mem_data_IR, 
 														 data_out => IR);
 	
 	-- Register file is responsible for reading data from and writing data to the registers.
@@ -126,12 +127,12 @@ begin
 	-- serve as storage for intermediate values during computation.													
     Temporary_Register1: Reg_16BIT port map (Clk => Clk, 
 														 Reset => Reset, 
-													  data_in => DataA, 
+													  data_in => DataA_T1, 
 													 data_out => T1_data);
 																
     Temporary_Register2: Reg_16BIT port map (Clk => Clk, 
 														 Reset => Reset, 
-													  data_in => DataB, 
+													  data_in => DataB_T2, 
 													 data_out => T2_data);
 	 
     Temporary_Register3: Reg_16BIT port map (Clk => Clk, 
@@ -144,7 +145,7 @@ begin
     Arithmetic: ALU port map (A => M4, 
 										B => M5, 
 									Oper => M1, 
-										Z => Z_Flag, 
+										Z => Z_Temp, 
 										C => ALU_data);
 
 	-- Parallelly connected 1-bit MUXes that decide whether to branch to the 
@@ -174,8 +175,11 @@ begin
 
             when rst=>
                 state_next <= S1;
+					 
+			   when S1=>
+				    state_next <= S1delay;
 
-            when S1=>
+            when S1delay=>
                 if ((IR(15 downto 12) = "1010") OR (IR(15 downto 12) = "1011")) then
                     state_next <= S17;
 				    elsif IR(15 downto 0) = "0000000000000000" then
@@ -271,157 +275,225 @@ begin
 
     output_proc: process(state_present, Mem_W, Mem_R)
     begin
-        B <= "00000000000000000000";
+        B <= "000000000000000000000";
         Mem_W <= '0';
         Mem_R <= '0';
         T1_W <= '0';
         T2_W <= '0';
+		  IR_Write <= '0';
+		  Z_W <= '0';
+		  R7_Push <= '0';
 
         case state_present is
 		  
 		      when rst =>
-					B <= "00000000000000000000";
+					B <= "000000000000000000000";
 				  Mem_W <= '0';
 				  Mem_R <= '0';
 				  T1_W <= '0';
 				  T2_W <= '0';
 				  IP_store <= '0';
-
-            when S1=>
-                B <= "00010001001011010001";
+				  IR_Write <= '0';
+				  Z_W <= '0';
+				  R7_Push <= '0';
+				
+				when S1=>
+				   B <= "010000001000000000000";
+               Mem_W <= '0';
+               Mem_R <= '1';
+               T1_W <= '0';
+               T2_W <= '0';
+					IP_store <= '0';
+					IR_Write <= '1';
+					Z_W <= '0';
+					R7_Push <= '1';
+				
+            when S1delay=>
+                B <= "010010001001011010001";
                 Mem_W <= '0';
                 Mem_R <= '1';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '1';
+					 IR_Write <= '1';
+					 Z_W <= '0';
+					 R7_Push <= '1';
 
             when S2=>
-                B <= "00000000000000000000";
+                B <= "010000000000000000000";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '1';
                 T2_W <= '1';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S3=>
-                B <= "00000100010100000011";
+                B <= "010000100010100000011";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '1';
+					 R7_Push <= '0';
 
             when S4=>
-                B <= "00000000000000010100";
+                B <= "010000000000000010100";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S5=>
-                B <= "00000100011100000000";
+                B <= "010000100011100000000";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S6=>
-                B <= "00001010000000000000";
+                B <= "010001010000000000000";
                 Mem_W <= '0';
                 Mem_R <= '1';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S7=>
-                B <= "00000000000000011100";
+                B <= "010000000000000011100";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S8=>
-                B <= "00000000000001001100";
+                B <= "110000000000001101100";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S9=>
-                B <= "00000000000000101100";
+                B <= "010000000000000101100";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S10=>
-                B <= "00000000000000111100";
+                B <= "010000000000000111100";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S11=>
-                B <= "00000010000000000000";
+                B <= "010000010000000000000";
                 Mem_W <= '1';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S12=>
-                B <= "00000000010100000010";
+                B <= "010000000010100000010";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '1';
+					 R7_Push <= '0';
 
             when S13=>
-                B <= "00100000100011010001";
+                B <= "110100000100111010001";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '1';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S14=>
-                B <= "00010000101011010001";
+                B <= "110010000101111010001";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '1';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S15=>
-                B <= "00110000000001010000";
+                B <= "010110000000001010000";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '1';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S16=>
-                B <= "00000000000000011000";
+                B <= "010000000000000011000";
                 Mem_W <= '0';
                 Mem_R <= '0';
                 T1_W <= '0';
                 T2_W <= '0';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when S17=>
-                B <= "11000000000000000000";
+                B <= "101000000000000000000";
                 Mem_W <= '0';
                 Mem_R <= '0';
-                T1_W <= '0';
-                T2_W <= '0';
+                T1_W <= '1';
+                T2_W <= '1';
 					 IP_store <= '0';
+					 IR_Write <= '0';
+					 Z_W <= '0';
+					 R7_Push <= '0';
 
             when others =>
                 NULL;
@@ -429,7 +501,54 @@ begin
         end case;
 
     end process output_proc;
+	 
+	 IR_proc: process (IR_Write, Mem_data, Mem_data_IR)
+	 begin
+	     if (IR_Write ='1') then
+		      Mem_data_IR <= Mem_data;
+		  else
+		      Mem_data_IR <= Mem_data_IR;
+		  end if;
+	 end process IR_proc;
+	 
+	 Z_proc: process (Z_W, Z_Temp, Z_flag)
+	 begin
+	     if (Z_W ='1') then
+		      Z_Flag <= Z_Temp;
+		  else
+		      Z_Flag <= Z_Flag;
+		  end if;
+	 end process Z_proc;
+	 
+	 R7_proc: process (R7_Push, IP, IP_R7)
+	 begin
+	     if (R7_Push ='1') then
+		      IP_R7 <= IP;
+		  else
+		      IP_R7 <= IP_R7;
+		  end if;
+	 end process R7_proc;
+	 
+	 
+	 T1_proc: process (T1_W, DataA, DataA_T1)
+	 begin
+	     if (T1_W ='1') then
+		      DataA_T1 <= DataA;
+		  else
+		      DataA_T1 <= DataA_T1;
+		  end if;
+	 end process T1_proc;
+	 
+	 T2_proc: process (T2_W, DataB, DataB_T2)
+	 begin
+	     if (T2_W ='1') then
+		      DataB_T2 <= DataB;
+		  else
+		      DataB_T2 <= DataB_T2;
+		  end if;
+	 end process T2_proc;
 
+		  
     MUX1: process (B, M1, IR)
     begin
         if ((B(1) = '0') and (B(0) = '1')) then
@@ -458,7 +577,7 @@ begin
         end if;
     end process MUX2;
 
-   MUX3: process (B, M3, M8, IR, T3_data, IP)
+   MUX3: process (B, M3, IP_R7, IR, T3_data, IP, DataB)
 	begin
 		 if ((B(6) = '0') and (B(5) = '0') and (B(4) = '1')) then
 			  M3 <= T3_data;
@@ -469,18 +588,22 @@ begin
 		 elsif ((B(6) = '1') and (B(5) = '0') and (B(4) = '0')) then
 			  M3 <= IP;
 		 elsif ((B(6) = '1') and (B(5) = '0') and (B(4) = '1')) then
-			  M3 <= M8;
+			  M3 <= IP_R7;
+		 elsif ((B(6) = '1') and (B(5) = '1') and (B(4) = '0')) then
+			  M3 <= DataB;
 		 else
 			  M3 <= M3;
 		 end if;
 	end process MUX3;
 
-	MUX4: process (B, M4, IP, T1_data)
+	MUX4: process (B, M4, IP, T1_data, DataB)
 	begin
 		 if ((B(8) = '0') and (B(7) = '1')) then
 			  M4 <= IP;
 		 elsif ((B(8) = '1') and (B(7) = '0')) then
 			  M4 <= T1_data;
+		 elsif ((B(8) = '1') and (B(7) = '1')) then
+			  M4 <= DataB;
 		 else
 			  M4 <= M4;
 		 end if;
@@ -489,7 +612,7 @@ begin
 	MUX5: process (B, M5, T2_data, IR)
 	begin
 		 if ((B(11) = '0') and (B(10) = '0') and (B(9) = '1')) then
-			  M5 <= "0000000000000010";
+			  M5 <= "0000000000000001";
 		 elsif ((B(11) = '0') and (B(10) = '1') and (B(9) = '0')) then
 			  M5 <= T2_data;
 		 elsif ((B(11) = '0') and (B(10) = '1') and (B(9) = '1')) then
@@ -552,9 +675,9 @@ begin
 
 	MUX9: process (B, M9, IR, T1_W)
 	begin
-		 if ((B(18) = '0') AND (T1_W = '1')) then
+		 if ((B(18) = '0')) then
 			  M9 <= IR(11 downto 9);
-		 elsif ((B(18) = '1') AND (T1_W = '1')) then
+		 elsif ((B(18) = '1')) then
 			  M9 <= IR(8 downto 6);
 		 else 
 			  M9 <= M9;
@@ -563,10 +686,12 @@ begin
 
 	MUX10: process (B, M10, IR, T2_W)
 	begin
-		 if ((B(19) = '0') and (T2_W = '1')) then
+		 if ((B(20) = '0') AND (B(19) = '1')) then
 			  M10 <= IR(8 downto 6);
-		 elsif ((B(19) = '1') and (T2_W = '1')) then
+		 elsif ((B(20) = '1') AND (B(19) = '0')) then
 			  M10 <= IR(11 downto 9);
+		 elsif ((B(20) = '1') AND (B(19) = '1')) then
+			  M10 <= "111";
 		 else
 			  M10 <= M10;
 		 end if;
